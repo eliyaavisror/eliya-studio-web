@@ -24,6 +24,33 @@ export default async function ArchitecturePage({
   return <Content heroImage={heroImage} />;
 }
 
+const SPECIALTY_ICONS = [
+  /* בתים פרטיים */
+  <svg key="house" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+    <path d="M9 21V12h6v9"/>
+  </svg>,
+  /* מבני ציבור */
+  <svg key="public" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 10v11M12 10v11M16 10v11"/>
+  </svg>,
+  /* משרדים ומסחר */
+  <svg key="office" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="2" y="3" width="20" height="18" rx="1"/>
+    <path d="M8 3v18M2 9h6M2 15h6M14 9h6M14 15h6M14 3v18"/>
+  </svg>,
+  /* תוספות בנייה ושיפוצים */
+  <svg key="renovation" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+  </svg>,
+  /* מבנים מקיימים */
+  <svg key="sustainable" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M12 2a9 9 0 0 1 9 9c0 4.17-2.84 7.67-6.71 8.66A9 9 0 0 1 3 11"/>
+    <path d="M12 2C7.58 2 4 5.58 4 10c0 2.65 1.22 5.02 3.13 6.55"/>
+    <path d="M12 22v-6M9 19l3 3 3-3"/>
+  </svg>,
+];
+
 function Content({ heroImage }: { heroImage: string }) {
   const t = useTranslations("architecture");
   const locale = useLocale() as "he" | "en";
@@ -113,7 +140,7 @@ function Content({ heroImage }: { heroImage: string }) {
       {/* SPECIALTIES — dark inverted */}
       <section className="section-pad bg-ink text-paper">
         <div className="container-x">
-          <div className="grid md:grid-cols-12 gap-8 md:gap-16 mb-12 md:mb-16">
+          <div className="grid md:grid-cols-12 gap-8 md:gap-16">
             <div className="md:col-span-4">
               <p className="ticker text-paper/60 mb-4">02 — תמחויות</p>
               <h2 className="text-display-lg font-semibold">
@@ -121,16 +148,13 @@ function Content({ heroImage }: { heroImage: string }) {
               </h2>
             </div>
             <div className="md:col-span-8">
-              <ul className="border-y border-paper/20">
+              <ul className="flex flex-col divide-y divide-paper/10">
                 {specialties.map((item, i) => (
-                  <li
-                    key={item}
-                    className="border-b last:border-b-0 border-paper/15 py-6 md:py-7 flex items-baseline gap-8 group"
-                  >
-                    <span className="ticker text-paper/45 tabular-nums w-12 shrink-0">
-                      {String(i + 1).padStart(2, "0")}
+                  <li key={item} className="flex items-center gap-5 py-5 group">
+                    <span className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full border border-paper/20 text-paper/70 group-hover:border-paper/50 group-hover:text-paper transition-colors duration-300">
+                      {SPECIALTY_ICONS[i]}
                     </span>
-                    <span className="text-2xl md:text-3xl font-semibold tracking-tight transition-transform duration-300 ease-smooth group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+                    <span className="text-lg md:text-xl font-medium tracking-tight transition-transform duration-300 ease-smooth group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
                       {item}
                     </span>
                   </li>

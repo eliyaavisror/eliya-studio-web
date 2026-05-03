@@ -48,7 +48,6 @@ export default function Header() {
   }, [mobileOpen]);
 
   const navItems = [
-    { href: "/", label: t("home") },
     { href: "/architecture", label: t("architecture") },
     { href: "/visualizations", label: t("visualizations") },
     { href: "/about", label: t("about") },
