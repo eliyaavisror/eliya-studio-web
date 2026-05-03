@@ -1,4 +1,5 @@
 export type ProjectCategory = "exterior" | "interior" | "aerial" | "architecture";
+export type ProjectStatus = "planning" | "licensing" | "construction" | "completed";
 
 export interface Project {
   slug: string;
@@ -8,14 +9,62 @@ export interface Project {
   year: number;
   title: { he: string; en: string };
   location: { he: string; en: string };
+  client?: { he: string; en: string };
+  status?: ProjectStatus;
   description?: { he: string; en: string };
   cover: string;
   images: string[];
 }
 
+import fs from "fs";
+import path from "path";
+
 const EXT = "/images/projects/visualizations/exterior";
 const INT = "/images/projects/visualizations/interior";
 const ARCH = "/images/projects/architecture";
+const ARCH_DIR = path.join(process.cwd(), "public/images/projects/architecture");
+
+type ProjectJSON = {
+  slug: string;
+  year: number;
+  status: string;
+  title: { he: string; en: string };
+  location: { he: string; en: string };
+  client?: { he: string; en: string };
+  description?: { he: string; en: string };
+  images: string[];
+};
+
+function loadArchProjects(): Project[] {
+  const entries = fs.readdirSync(ARCH_DIR, { withFileTypes: true });
+  return entries
+    .filter((e) => e.isDirectory())
+    .flatMap((e) => {
+      const jsonPath = path.join(ARCH_DIR, e.name, "project.json");
+      if (!fs.existsSync(jsonPath)) return [];
+      const data: ProjectJSON = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
+      const base = `${ARCH}/${e.name}`;
+      const images = data.images.map((f) => `${base}/${f}`);
+      const project: Project = {
+        slug: data.slug,
+        category: "architecture",
+        type: "architecture",
+        year: data.year,
+        status: data.status as ProjectStatus,
+        title: data.title,
+        location: data.location,
+        client: data.client,
+        description: data.description,
+        cover: images[0] ?? `${ARCH}/placeholder-house-1.svg`,
+        images: images.length ? images : [`${ARCH}/placeholder-house-1.svg`],
+      };
+      return [project];
+    });
+}
+
+export function getArchProjects(): Project[] {
+  return loadArchProjects();
+}
 
 export const projects: Project[] = [
   {
@@ -210,4 +259,6 @@ export const getFeaturedProjects = () => projects.filter((p) => p.featured);
 export const getProjectsByType = (type: Project["type"]) => projects.filter((p) => p.type === type);
 export const getProjectsByCategory = (category: ProjectCategory) =>
   projects.filter((p) => p.category === category);
-export const getProjectBySlug = (slug: string) => projects.find((p) => p.slug === slug);
+export const getProjectBySlug = (slug: string) =>
+  getArchProjects().find((p) => p.slug === slug) ?? projects.find((p) => p.slug === slug);
+export const getArchProjectBySlug = (slug: string) => getArchProjects().find((p) => p.slug === slug);

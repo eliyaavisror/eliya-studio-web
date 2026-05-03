@@ -2,8 +2,8 @@ import { useTranslations, useLocale } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { getProjectsByType } from "@/data/projects";
-import ProjectCard from "@/components/ProjectCard";
+import { getArchProjects } from "@/data/projects";
+import ArchProjectCard from "@/components/ArchProjectCard";
 import { getHeroImage } from "@/lib/heroImage";
 import type { Metadata } from "next";
 
@@ -54,7 +54,6 @@ const SPECIALTY_ICONS = [
 function Content({ heroImage }: { heroImage: string }) {
   const t = useTranslations("architecture");
   const locale = useLocale() as "he" | "en";
-  const projects = getProjectsByType("architecture");
   const steps = t.raw("process.steps") as Array<{ number: string; title: string; body: string }>;
   const specialties = t.raw("specialties.items") as string[];
 
@@ -166,25 +165,25 @@ function Content({ heroImage }: { heroImage: string }) {
       </section>
 
       {/* SELECTED PROJECTS */}
-      {projects.length > 0 && (
+      {getArchProjects().length > 0 && (
         <section id="projects" className="section-pad">
           <div className="container-x">
-            <div className="flex flex-wrap items-end justify-between gap-6 pb-8 mb-14 border-b border-ink">
-              <div>
-                <p className="ticker text-ink-muted mb-4">03 — נבחרים</p>
-                <h2 className="text-display-lg font-semibold">
-                  {locale === "he" ? "פרויקטים נבחרים" : "Selected projects"}
-                </h2>
-              </div>
-              <Link href="/visualizations" className="ticker link-underline">
-                {locale === "he" ? "כל הפרויקטים" : "All projects"} →
-              </Link>
+            <div className="pb-8 mb-14 border-b border-ink">
+              <p className="ticker text-ink-muted mb-4">03 — פרויקטים</p>
+              <h2 className="text-display-lg font-semibold">
+                {locale === "he" ? "פרויקטים אדריכליים" : "Architecture projects"}
+              </h2>
             </div>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-              {projects.map((p, i) => (
-                <ProjectCard key={p.slug} project={p} index={i + 1} />
+              {getArchProjects().map((p, i) => (
+                <ArchProjectCard key={p.slug} project={p} locale={locale} index={i + 1} />
               ))}
             </div>
+            <p className="mt-16 text-ink-muted text-sm ticker border-t border-ink/10 pt-8">
+              {locale === "he"
+                ? "בימים אלו אנו עובדים על עוד פרויקטים שיעלו לכאן בקרוב..."
+                : "We are currently working on more projects that will be added here soon..."}
+            </p>
           </div>
         </section>
       )}

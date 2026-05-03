@@ -1,0 +1,22 @@
+{
+  "slug": "horse-farm",
+  "year": 2025,
+  "status": "licensing",
+  "title": {
+    "he": "חוות סוסים טיפולית",
+    "en": "Therapeutic horse farm"
+  },
+  "location": {
+    "he": "אלון",
+    "en": "Alon"
+  },
+  "client": {
+    "he": "רותי וחיים מן",
+    "en": "Ruth and Haim Man"
+  },
+  "description": {
+    "he": "מרכז טיפול לפוסט טראומה באמצעות רכיבה טיפולית, המרכז סמוך לישוב אלון שבבנימין",
+    "en": "A post-trauma treatment center for soldiers through horseback riding therapy, near the settlement of Alon in Binyamin."
+  },
+  "images": ["01.jpg"]
+}
