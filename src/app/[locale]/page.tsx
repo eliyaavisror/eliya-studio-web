@@ -49,7 +49,6 @@ function Content({ heroImage }: { heroImage: string }) {
             <div className="flex flex-wrap gap-2">
               <Link href="/architecture" className="btn border border-paper text-paper hover:bg-paper/20">{t("hero.ctaArch")}</Link>
               <Link href="/visualizations" className="btn border border-paper text-paper hover:bg-paper/20">{t("hero.ctaViz")}</Link>
-              <Link href="/contact" className="btn-outline-light">{t("hero.ctaSecondary")}</Link>
             </div>
           </div>
         </div>
