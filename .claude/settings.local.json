@@ -17,7 +17,11 @@
       "Bash(cp \"E:/Development/EliyaNewWeb/nextjs-patch/src/app/[locale]/contact/page.tsx\" \"E:/Development/EliyaNewWeb/src/app/[locale]/contact/page.tsx\")",
       "WebFetch(domain:savvy.co.il)",
       "mcp__Claude_in_Chrome__tabs_context_mcp",
-      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('next:', p.dependencies.next\\)\")"
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('next:', p.dependencies.next\\)\")",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(npx vercel *)"
     ]
   }
 }

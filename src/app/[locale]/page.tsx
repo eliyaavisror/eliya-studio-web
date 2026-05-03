@@ -2,8 +2,6 @@ import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { getFeaturedProjects } from "@/data/projects";
-import ProjectCard from "@/components/ProjectCard";
 import { getHeroImage } from "@/lib/heroImage";
 
 export default async function HomePage({
@@ -17,7 +15,6 @@ export default async function HomePage({
 
 function Content({ heroImage }: { heroImage: string }) {
   const t = useTranslations("home");
-  const featured = getFeaturedProjects();
 
   return (
     <>
@@ -101,30 +98,10 @@ function Content({ heroImage }: { heroImage: string }) {
         </div>
       </section>
 
-      {/* FEATURED */}
-      <section className="section-pad">
-        <div className="container-x">
-          <div className="flex flex-wrap items-end justify-between gap-6 pb-8 mb-14 md:mb-16 border-b border-ink">
-            <div>
-              <p className="ticker text-ink-muted mb-4">03 — נבחרים</p>
-              <h2 className="text-display-lg font-semibold">{t("featured.title")}</h2>
-            </div>
-            <Link href="/visualizations" className="ticker link-underline">
-              {t("featured.viewAll")} →
-            </Link>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {featured.map((project, i) => (
-              <ProjectCard key={project.slug} project={project} priority={i < 2} index={i + 1} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="section-pad bg-paper-warm">
         <div className="container-x text-center max-w-3xl mx-auto">
-          <p className="ticker text-ink-muted mb-6">04 — בואו נתחיל</p>
+          <p className="ticker text-ink-muted mb-6">03 — בואו נתחיל</p>
           <h2 className="text-display-xl font-semibold text-balance">{t("cta.title")}</h2>
           <p className="mt-7 text-lg md:text-xl text-ink-soft text-pretty max-w-[42ch] mx-auto">
             {t("cta.body")}
