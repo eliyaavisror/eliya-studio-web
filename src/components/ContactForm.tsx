@@ -49,6 +49,8 @@ export default function ContactForm() {
         setStatus("success");
         form.reset();
       } else {
+        const body = await res.json().catch(() => ({}));
+        console.error("Formspree error", res.status, body);
         setStatus("error");
       }
     } catch {
