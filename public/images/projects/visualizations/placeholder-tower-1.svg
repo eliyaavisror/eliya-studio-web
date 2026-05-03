@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Residential tower render placeholder">
+  <defs>
+    <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C8D4DD"/>
+      <stop offset="100%" stop-color="#E8E2D5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky3)"/>
+  <rect y="900" width="1600" height="100" fill="#5A5040"/>
+  <rect x="600" y="100" width="400" height="800" fill="#F5F2EA"/>
+  <g fill="#1A1A1A" opacity="0.7">
+    <rect x="620" y="140" width="360" height="20"/>
+    <rect x="620" y="200" width="360" height="20"/>
+    <rect x="620" y="260" width="360" height="20"/>
+    <rect x="620" y="320" width="360" height="20"/>
+    <rect x="620" y="380" width="360" height="20"/>
+    <rect x="620" y="440" width="360" height="20"/>
+    <rect x="620" y="500" width="360" height="20"/>
+    <rect x="620" y="560" width="360" height="20"/>
+    <rect x="620" y="620" width="360" height="20"/>
+    <rect x="620" y="680" width="360" height="20"/>
+    <rect x="620" y="740" width="360" height="20"/>
+    <rect x="620" y="800" width="360" height="20"/>
+  </g>
+  <rect x="200" y="600" width="300" height="300" fill="#E0DBCB"/>
+  <rect x="1100" y="500" width="350" height="400" fill="#D5CFBF"/>
+  <text x="800" y="970" text-anchor="middle" fill="#FAFAF7" font-family="serif" font-size="20" opacity="0.7">TOWER TLV — placeholder</text>
+</svg>

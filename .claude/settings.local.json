@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:eliyastudio.com)",
+      "Bash(npm --version)",
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --app --src-dir --import-alias \"@/*\" --eslint --no-turbopack --use-npm --yes)",
+      "Bash(npm install *)",
+      "Bash(npm audit *)",
+      "Bash(npm run *)",
+      "Bash(PORT=3000 npm run dev)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(curl -s http://localhost:3000/sitemap.xml)",
+      "Bash(curl -s http://localhost:3000/robots.txt)",
+      "Bash(cp \"E:/Development/EliyaNewWeb/nextjs-patch/src/app/[locale]/layout.tsx\" \"E:/Development/EliyaNewWeb/src/app/[locale]/layout.tsx\")",
+      "Bash(cp \"E:/Development/EliyaNewWeb/nextjs-patch/src/app/[locale]/architecture/page.tsx\" \"E:/Development/EliyaNewWeb/src/app/[locale]/architecture/page.tsx\")",
+      "Bash(cp \"E:/Development/EliyaNewWeb/nextjs-patch/src/app/[locale]/visualizations/page.tsx\" \"E:/Development/EliyaNewWeb/src/app/[locale]/visualizations/page.tsx\")",
+      "Bash(cp \"E:/Development/EliyaNewWeb/nextjs-patch/src/app/[locale]/contact/page.tsx\" \"E:/Development/EliyaNewWeb/src/app/[locale]/contact/page.tsx\")",
+      "WebFetch(domain:savvy.co.il)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('next:', p.dependencies.next\\)\")"
+    ]
+  }
+}
