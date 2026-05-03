@@ -28,7 +28,7 @@ export const siteConfig = {
   },
 
   formspree: {
-    endpoint: "https://formspree.io/f/your-form-id",
+    endpoint: "https://formspree.io/f/xeenenpn",
   },
 
   seo: {
