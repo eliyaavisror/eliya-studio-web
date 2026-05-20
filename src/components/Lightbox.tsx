@@ -124,7 +124,7 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
       ref={rootRef}
       role="dialog"
       aria-modal="true"
-      aria-label={current.title}
+      aria-label={current.title ?? ""}
       className="fixed inset-0 z-[200] flex items-center justify-center bg-[#0a0a0a] select-none"
       onClick={zoom === 1 ? handleClose : undefined}
       onMouseMove={onMouseMove}
@@ -224,7 +224,7 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
           <Image
             key={current.src}
             src={current.src}
-            alt={current.title}
+            alt={current.title ?? ""}
             fill
             sizes="100vw"
             className="object-contain"

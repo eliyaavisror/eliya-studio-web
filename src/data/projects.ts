@@ -66,6 +66,54 @@ export function getArchProjects(): Project[] {
   return loadArchProjects();
 }
 
+// ── Visualization projects (dynamic) ──────────────────────────────────────────
+
+const VIZ_DIR = path.join(process.cwd(), "public/images/projects/visualizations");
+const VIZ_EXCLUDED = new Set(["exterior", "interior", "aerial"]);
+
+type VisProjJSON = {
+  slug: string;
+  year: number;
+  category: string;
+  featured?: boolean;
+  title: { he: string; en: string };
+  location: { he: string; en: string };
+  description?: { he: string; en: string };
+  images: string[];
+};
+
+function loadVisProjects(): Project[] {
+  const entries = fs.readdirSync(VIZ_DIR, { withFileTypes: true });
+  return entries
+    .filter((e) => e.isDirectory() && !VIZ_EXCLUDED.has(e.name))
+    .flatMap((e) => {
+      const jsonPath = path.join(VIZ_DIR, e.name, "project.json");
+      if (!fs.existsSync(jsonPath)) return [];
+      const data: VisProjJSON = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
+      const base = `/images/projects/visualizations/${e.name}`;
+      const images = data.images.map((f) =>
+        f.startsWith("/") ? f : `${base}/${f}`
+      );
+      return [{
+        slug: data.slug,
+        category: data.category as ProjectCategory,
+        type: "visualization" as const,
+        featured: data.featured ?? false,
+        year: data.year,
+        title: data.title,
+        location: data.location,
+        description: data.description,
+        cover: images[0] ?? "",
+        images,
+      } as Project];
+    });
+}
+
+export function getVisProjects(): Project[] {
+  return loadVisProjects();
+}
+
+// keep `projects` as alias for backward compat with any existing imports
 export const projects: Project[] = [
   {
     slug: "villa-moderna",
@@ -255,10 +303,10 @@ export const projects: Project[] = [
   },
 ];
 
-export const getFeaturedProjects = () => projects.filter((p) => p.featured);
-export const getProjectsByType = (type: Project["type"]) => projects.filter((p) => p.type === type);
+export const getFeaturedProjects = () => getVisProjects().filter((p) => p.featured);
+export const getProjectsByType = (type: Project["type"]) => getVisProjects().filter((p) => p.type === type);
 export const getProjectsByCategory = (category: ProjectCategory) =>
-  projects.filter((p) => p.category === category);
+  getVisProjects().filter((p) => p.category === category);
 export const getProjectBySlug = (slug: string) =>
-  getArchProjects().find((p) => p.slug === slug) ?? projects.find((p) => p.slug === slug);
+  getArchProjects().find((p) => p.slug === slug) ?? getVisProjects().find((p) => p.slug === slug);
 export const getArchProjectBySlug = (slug: string) => getArchProjects().find((p) => p.slug === slug);

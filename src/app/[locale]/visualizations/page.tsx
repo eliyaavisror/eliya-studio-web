@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import VisualizationGallery from "@/components/VisualizationGallery";
 import { getHeroImage } from "@/lib/heroImage";
+import { loadAllGalleryImages } from "@/lib/gallery-loader";
+import type { GalleryImage } from "@/data/gallery";
 import type { Metadata } from "next";
 
 export async function generateMetadata({
@@ -20,10 +22,11 @@ export default async function VisualizationsPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const heroImage = getHeroImage("visualizations") ?? "/images/projects/visualizations/exterior/FF03 copy.webp";
-  return <Content heroImage={heroImage} />;
+  const images = loadAllGalleryImages();
+  return <Content heroImage={heroImage} images={images} />;
 }
 
-function Content({ heroImage }: { heroImage: string }) {
+function Content({ heroImage, images }: { heroImage: string; images: GalleryImage[] }) {
   const t = useTranslations("visualizations");
   const locale = useLocale() as "he" | "en";
 
@@ -159,7 +162,7 @@ function Content({ heroImage }: { heroImage: string }) {
             </div>
             <p className="ticker text-ink-muted">100+ פרויקטים</p>
           </div>
-          <VisualizationGallery />
+          <VisualizationGallery images={images} locale={locale} />
         </div>
       </section>
 
