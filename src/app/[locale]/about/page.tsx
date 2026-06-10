@@ -90,17 +90,6 @@ function Content({ heroImage }: { heroImage: string }) {
       </section>
       </div>
 
-      {/* STATS — dark inverted */}
-      <section id="about-more" className="bg-ink text-paper">
-        <div className="container-x">
-          <div className="grid md:grid-cols-3 divide-paper/15 md:divide-x rtl:md:divide-x-reverse">
-            <Stat number="100+" label={t("stats.projects")} />
-            <Stat number="8" label={t("stats.years")} />
-            <Stat number="100%" label={t("stats.clients")} />
-          </div>
-        </div>
-      </section>
-
       {/* ARCHITECTURE */}
       <section className="section-pad">
         <div className="container-x grid md:grid-cols-12 gap-8 md:gap-16 items-start">
