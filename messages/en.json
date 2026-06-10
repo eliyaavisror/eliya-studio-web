@@ -148,7 +148,8 @@
     },
     "story": {
       "title": "Our story",
-      "body": "The studio was founded by Eliya Eidelman, an architect and graduate of the Bezalel Academy of Arts and Design. Alongside Eliya, a diverse team from the worlds of architecture and design brings shared knowledge and experience — allowing us to deeply understand the language of planning, spatial thinking, and the complexity behind every project."
+      "body1": "The studio was founded and is led by Eliya Eidelman, a licensed architect holding a B.Arch in Architecture and a graduate of the Bezalel Academy of Arts and Design.",
+      "body2": "The studio operates from an innovative vision that combines a deep understanding of design language and spatial thinking with the most advanced cutting-edge tools on the market. Our work is grounded in advanced BIM methodology and the integration of artificial intelligence (AI), enabling maximum planning precision, outstanding visual simulations, and the ability to solve the unique complexity of each project. Our extensive professional experience and mastery of tomorrow's technologies ensure a complete, personalized, and uncompromising architectural response."
     },
     "arch": {
       "title": "Architectural Design",
