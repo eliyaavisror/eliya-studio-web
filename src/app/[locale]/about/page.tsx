@@ -82,10 +82,9 @@ function Content({ heroImage }: { heroImage: string }) {
             <p className="index-big">01</p>
             <h2 className="mt-2 text-display-lg font-semibold">{t("story.title")}</h2>
           </div>
-          <div className="md:col-span-8">
-            <p className="text-lg md:text-xl text-ink-soft leading-relaxed text-pretty max-w-[60ch]">
-              {t("story.body")}
-            </p>
+          <div className="md:col-span-8 flex flex-col gap-6 max-w-[60ch]">
+            <p className="text-lg md:text-xl text-ink-soft leading-relaxed text-pretty">{t("story.body1")}</p>
+            <p className="text-lg text-ink-soft leading-relaxed text-pretty">{t("story.body2")}</p>
           </div>
         </div>
       </section>
