@@ -51,7 +51,7 @@
     },
     "cta": {
       "title": "Starting a project?",
-      "body": "Tell us about your vision. We'll respond within 24 hours.",
+      "body": "Tell us about your vision. We'll get back to you soon.",
       "button": "Let's talk"
     }
   },
@@ -136,7 +136,7 @@
     },
     "cta": {
       "title": "Need a render?",
-      "body": "Send us your plans and we'll respond with a quote within one business day.",
+      "body": "Send us your plans and we'll get back to you with a quote soon.",
       "button": "Request a quote"
     }
   },
@@ -179,7 +179,7 @@
     "hero": {
       "eyebrow": "Contact",
       "title": "Let's talk about your next project",
-      "body": "Initial consultation at no charge. We respond within 24 hours."
+      "body": "We'll get back to you as soon as possible."
     },
     "info": {
       "phoneLabel": "Phone",
