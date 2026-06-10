@@ -75,11 +75,12 @@ function Content({ heroImage }: { heroImage: string }) {
       </section>
 
       {/* STORY */}
-      <section className="flex-1 flex items-center py-10 md:py-14 border-t border-ink">
-        <div className="container-x grid md:grid-cols-12 gap-6 md:gap-12 items-center">
+      <section id="about-more" className="section-pad border-t border-b border-ink">
+        <div className="container-x grid md:grid-cols-12 gap-8 md:gap-16 items-start">
           <div className="md:col-span-4">
-            <p className="ticker text-ink-muted mb-3">01 — סיפור</p>
-            <h2 className="text-display-lg font-semibold">{t("story.title")}</h2>
+            <p className="ticker text-ink-muted mb-4">01 — סיפור</p>
+            <p className="index-big">01</p>
+            <h2 className="mt-2 text-display-lg font-semibold">{t("story.title")}</h2>
           </div>
           <div className="md:col-span-8">
             <p className="text-lg md:text-xl text-ink-soft leading-relaxed text-pretty max-w-[60ch]">
