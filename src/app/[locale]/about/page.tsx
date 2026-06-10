@@ -53,11 +53,6 @@ function Content({ heroImage }: { heroImage: string }) {
           <h1 className="text-display-2xl font-bold text-balance max-w-[16ch]">
             {t("hero.title")}
           </h1>
-          <div className="mt-12 md:mt-14 grid md:grid-cols-12 gap-8 items-end">
-            <p className="md:col-span-7 max-w-[52ch] text-lg md:text-xl text-ink-soft leading-relaxed text-pretty">
-              {t("hero.body")}
-            </p>
-          </div>
         </div>
         <a
           href="#about-more"
