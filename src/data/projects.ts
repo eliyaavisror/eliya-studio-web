@@ -67,6 +67,15 @@ function loadArchProjects(): Project[] {
         ? imageGroups.flatMap((g) => g.images)
         : (data.images ?? []).map((f) => `${base}/${f}`);
 
+      // Read description.txt if present (overrides JSON description for Hebrew)
+      const descTxtPath = path.join(ARCH_DIR, e.name, "description.txt");
+      const descHe = fs.existsSync(descTxtPath)
+        ? fs.readFileSync(descTxtPath, "utf-8").trim()
+        : data.description?.he;
+      const description = descHe
+        ? { he: descHe, en: data.description?.en ?? descHe }
+        : data.description;
+
       const fallback = `${ARCH}/placeholder-house-1.svg`;
       const project: Project = {
         slug: data.slug,
@@ -77,7 +86,7 @@ function loadArchProjects(): Project[] {
         title: data.title,
         location: data.location,
         client: data.client,
-        description: data.description,
+        description,
         cover: images[0] ?? fallback,
         images: images.length ? images : [fallback],
         imageGroups,
