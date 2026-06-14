@@ -73,7 +73,7 @@ function Content({ slug }: { slug: string }) {
             {locale === "he" ? "תכנון אדריכלי" : "Architecture"}
           </Link>
 
-          <h1 className="text-display-lg font-bold text-paper text-balance max-w-[18ch] leading-[0.95]">
+          <h1 className="text-display-lg font-bold text-paper text-balance leading-[0.95]">
             {project.title[locale]}
           </h1>
 
