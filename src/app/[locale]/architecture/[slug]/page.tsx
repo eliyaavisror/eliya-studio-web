@@ -4,6 +4,7 @@ import { useLocale } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { getArchProjects, getArchProjectBySlug, type ProjectStatus } from "@/data/projects";
+import ProjectImageTabs from "@/components/ProjectImageTabs";
 import type { Metadata } from "next";
 
 const STATUS_MAP: Record<ProjectStatus, { he: string; en: string; dot: string }> = {
@@ -99,21 +100,29 @@ function Content({ slug }: { slug: string }) {
               </p>
             )}
 
-            {/* Image grid */}
-            <div className="grid gap-3">
-              {project.images.map((src, i) => (
-                <div key={src} className={`relative overflow-hidden bg-paper-warm ${i === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
-                  <Image
-                    src={src}
-                    alt={`${project.title[locale]} — ${i + 1}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 75vw"
-                    className="object-cover"
-                    priority={i === 0}
-                  />
-                </div>
-              ))}
-            </div>
+            {/* Images — grouped tabs or flat grid */}
+            {project.imageGroups ? (
+              <ProjectImageTabs
+                groups={project.imageGroups}
+                title={project.title[locale]}
+                locale={locale}
+              />
+            ) : (
+              <div className="grid gap-3">
+                {project.images.map((src, i) => (
+                  <div key={src} className={`relative overflow-hidden bg-paper-warm ${i === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
+                    <Image
+                      src={src}
+                      alt={`${project.title[locale]} — ${i + 1}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 75vw"
+                      className="object-cover"
+                      priority={i === 0}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>

@@ -1,6 +1,13 @@
 export type ProjectCategory = "exterior" | "interior" | "aerial" | "architecture";
 export type ProjectStatus = "planning" | "licensing" | "construction" | "completed";
 
+export interface ImageGroup {
+  id: string;
+  he: string;
+  en: string;
+  images: string[];
+}
+
 export interface Project {
   slug: string;
   category: ProjectCategory;
@@ -14,6 +21,7 @@ export interface Project {
   description?: { he: string; en: string };
   cover: string;
   images: string[];
+  imageGroups?: ImageGroup[];
 }
 
 import fs from "fs";
@@ -24,6 +32,8 @@ const INT = "/images/projects/visualizations/interior";
 const ARCH = "/images/projects/architecture";
 const ARCH_DIR = path.join(process.cwd(), "public/images/projects/architecture");
 
+type ImageGroupJSON = { id: string; he: string; en: string; images: string[] };
+
 type ProjectJSON = {
   slug: string;
   year: number;
@@ -32,7 +42,8 @@ type ProjectJSON = {
   location: { he: string; en: string };
   client?: { he: string; en: string };
   description?: { he: string; en: string };
-  images: string[];
+  images?: string[];
+  imageGroups?: ImageGroupJSON[];
 };
 
 function loadArchProjects(): Project[] {
@@ -44,7 +55,19 @@ function loadArchProjects(): Project[] {
       if (!fs.existsSync(jsonPath)) return [];
       const data: ProjectJSON = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
       const base = `${ARCH}/${e.name}`;
-      const images = data.images.map((f) => `${base}/${f}`);
+
+      const imageGroups: ImageGroup[] | undefined = data.imageGroups?.map((g) => ({
+        id: g.id,
+        he: g.he,
+        en: g.en,
+        images: g.images.map((f) => `${base}/${f}`),
+      }));
+
+      const images = imageGroups
+        ? imageGroups.flatMap((g) => g.images)
+        : (data.images ?? []).map((f) => `${base}/${f}`);
+
+      const fallback = `${ARCH}/placeholder-house-1.svg`;
       const project: Project = {
         slug: data.slug,
         category: "architecture",
@@ -55,8 +78,9 @@ function loadArchProjects(): Project[] {
         location: data.location,
         client: data.client,
         description: data.description,
-        cover: images[0] ?? `${ARCH}/placeholder-house-1.svg`,
-        images: images.length ? images : [`${ARCH}/placeholder-house-1.svg`],
+        cover: images[0] ?? fallback,
+        images: images.length ? images : [fallback],
+        imageGroups,
       };
       return [project];
     });
