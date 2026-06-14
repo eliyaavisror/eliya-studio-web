@@ -115,17 +115,14 @@ function Content({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {/* ══ DESCRIPTION ══ */}
+      {/* ══ ABOUT ══ tinted band, centered ══ */}
       {project.description && (
-        <section className="pt-9 md:pt-14 pb-2">
-          <div className="container-x">
-            <div className="flex items-center gap-3 mb-5 md:mb-6">
-              <span className="h-px w-10 bg-accent" />
-              <span className="ticker text-[10px] text-accent-dark">
-                {locale === "he" ? "על הפרויקט" : "About the project"}
-              </span>
-            </div>
-            <p className="text-base md:text-xl text-ink-soft leading-relaxed text-pretty max-w-[72ch]">
+        <section className="bg-paper-warm mt-10 md:mt-14 py-14 md:py-20">
+          <div className="container-x text-center">
+            <h2 className="text-display-lg font-bold tracking-tight mb-6">
+              {locale === "he" ? "על הפרויקט" : "About the project"}
+            </h2>
+            <p className="text-base md:text-xl font-light text-ink-soft leading-relaxed text-pretty max-w-[68ch] mx-auto">
               {project.description[locale]}
             </p>
           </div>
@@ -134,11 +131,31 @@ function Content({ slug }: { slug: string }) {
 
       {/* ══ NUMBERED SECTIONS ══ */}
       {project.sections ? (
-        <ProjectRichContent
-          sections={project.sections}
-          title={project.title[locale]}
-          locale={locale}
-        />
+        <>
+          {/* Bridge heading — introduces the design principles */}
+          <section className="pt-16 md:pt-24 text-center">
+            <div className="container-x">
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <span className="h-px w-8 bg-accent" />
+                <span className="ticker text-[10px] text-accent-dark">
+                  {locale === "he" ? "התכנון" : "The design"}
+                </span>
+                <span className="h-px w-8 bg-accent" />
+              </div>
+              <h2 className="text-display-lg font-bold tracking-tight max-w-[22ch] mx-auto">
+                {locale === "he"
+                  ? "העקרונות המרכזיים בתכנון הפרויקט"
+                  : "The core principles behind the project's design"}
+              </h2>
+            </div>
+          </section>
+
+          <ProjectRichContent
+            sections={project.sections}
+            title={project.title[locale]}
+            locale={locale}
+          />
+        </>
       ) : (project.imageGroups || project.images.length > 0) && (
         <section className="pt-12 pb-20 md:pb-32">
           <div className="container-x">
