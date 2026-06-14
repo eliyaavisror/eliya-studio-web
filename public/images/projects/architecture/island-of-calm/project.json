@@ -26,6 +26,15 @@
   },
   "sections": [
     {
+      "id": "salutogenic",
+      "title": {
+        "he": "אדריכלות טיפולית",
+        "en": "Therapeutic Architecture"
+      },
+      "he": "ליבת התכנון מושתתת על עקרונות הגישה הסלוטוגנית — אדריכלות ששמה לה למטרה אקטיבית לקדם בריאות, רווחה נפשית ובניית חוסן פנימי. כל אלמנט וחלל בפרויקט תוכננו כדי להפחית מתחים ולהשרות תחושת ביטחון, רוגע ושליטה. כחלק מכך, הושם דגש עליון ובלתי מתפשר על נגישות מוחלטת, המבטיחה שכל אדם יוכל לנוע במרחב בעצמאות, בכבוד וללא כל חסם פיזי או תחושתי.",
+      "en": "The core of the design is grounded in the principles of the salutogenic approach — architecture that actively sets out to promote health, mental well-being and the building of inner resilience. Every element and space in the project was designed to reduce stress and instill a sense of security, calm and control. As part of this, an utmost and uncompromising emphasis was placed on complete accessibility, ensuring that every person can move through the space independently, with dignity, and without any physical or sensory barrier."
+    },
+    {
       "id": "purpose",
       "title": {
         "he": "זמינות, רלוונטיות ונוכחות מלאה",
@@ -37,20 +46,11 @@
     {
       "id": "nature",
       "title": {
-        "he": "אדריכלות המשתלבת בטבע — סינרגיה בין פנים לחוץ",
+        "he": "אדריכלות המשתלבת בטבע",
         "en": "Architecture Woven into Nature"
       },
       "he": "הפרויקט, המשתרע על פני 11 דונם, תוכנן מתוך יראת כבוד לסביבה המדברית. בשיתוף פעולה הדוק עם אדריכלית הנוף צופיה ג'ייקוב, יצרנו תכנון שבו הבינוי צומח מתוך הטופוגרפיה המקומית ונטמע בה בהרמוניה. הארכיטקטורה אינה כופה את עצמה על ההר, אלא מנהלת איתו דיאלוג מיוחד. החומריות המקומית והטבעית מטשטשת את הגבולות שבין המבנים לנוף, ומאפשרת לשלווה המדברית לחדור אל תוך חללי השהייה ולשמש כחלק אינטגרלי מתהליך הריפוי.",
       "en": "Spanning 11 dunams, the project was designed with reverence for the desert environment. In close collaboration with landscape architect Tzofia Jacob, we created a design in which the built form grows out of the local topography and blends into it harmoniously. The architecture does not impose itself on the mountain, but rather holds a special dialogue with it. The local, natural materiality blurs the boundaries between the buildings and the landscape, allowing the desert serenity to permeate the interior spaces and become an integral part of the healing process."
-    },
-    {
-      "id": "salutogenic",
-      "title": {
-        "he": "אדריכלות סלוטוגנית — עיצוב מקדם חוסן",
-        "en": "Salutogenic Architecture — Designing for Resilience"
-      },
-      "he": "ליבת התכנון מושתתת על עקרונות הגישה הסלוטוגנית — אדריכלות ששמה לה למטרה אקטיבית לקדם בריאות, רווחה נפשית ובניית חוסן פנימי. כל אלמנט וחלל בפרויקט תוכננו כדי להפחית מתחים ולהשרות תחושת ביטחון, רוגע ושליטה. כחלק מכך, הושם דגש עליון ובלתי מתפשר על נגישות מוחלטת, המבטיחה שכל אדם יוכל לנוע במרחב בעצמאות, בכבוד וללא כל חסם פיזי או תחושתי.",
-      "en": "The core of the design is grounded in the principles of the salutogenic approach — architecture that actively sets out to promote health, mental well-being and the building of inner resilience. Every element and space in the project was designed to reduce stress and instill a sense of security, calm and control. As part of this, an utmost and uncompromising emphasis was placed on complete accessibility, ensuring that every person can move through the space independently, with dignity, and without any physical or sensory barrier."
     }
   ]
 }
