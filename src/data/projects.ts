@@ -8,6 +8,14 @@ export interface ImageGroup {
   images: string[];
 }
 
+export interface ContentSection {
+  id: string;
+  title?: { he: string; en: string };
+  he: string;
+  en: string;
+  image?: string;
+}
+
 export interface Project {
   slug: string;
   category: ProjectCategory;
@@ -22,6 +30,7 @@ export interface Project {
   cover: string;
   images: string[];
   imageGroups?: ImageGroup[];
+  sections?: ContentSection[];
 }
 
 import fs from "fs";
@@ -32,7 +41,18 @@ const INT = "/images/projects/visualizations/interior";
 const ARCH = "/images/projects/architecture";
 const ARCH_DIR = path.join(process.cwd(), "public/images/projects/architecture");
 
+function encodePath(relativePath: string): string {
+  return relativePath.split("/").map((p) => encodeURIComponent(p)).join("/");
+}
+
 type ImageGroupJSON = { id: string; he: string; en: string; images: string[] };
+type ContentSectionJSON = {
+  id: string;
+  title?: { he: string; en: string };
+  he: string;
+  en: string;
+  image?: string;
+};
 
 type ProjectJSON = {
   slug: string;
@@ -42,8 +62,10 @@ type ProjectJSON = {
   location: { he: string; en: string };
   client?: { he: string; en: string };
   description?: { he: string; en: string };
+  cover?: string;
   images?: string[];
   imageGroups?: ImageGroupJSON[];
+  sections?: ContentSectionJSON[];
 };
 
 function loadArchProjects(): Project[] {
@@ -60,16 +82,27 @@ function loadArchProjects(): Project[] {
         id: g.id,
         he: g.he,
         en: g.en,
-        images: g.images.map((f) => `${base}/${f}`),
+        images: g.images.map((f) => `${base}/${encodePath(f)}`),
+      }));
+
+      const sections: ContentSection[] | undefined = data.sections?.map((s) => ({
+        id: s.id,
+        title: s.title,
+        he: s.he,
+        en: s.en,
+        image: s.image ? `${base}/${encodePath(s.image)}` : undefined,
       }));
 
       const images = imageGroups
         ? imageGroups.flatMap((g) => g.images)
-        : (data.images ?? []).map((f) => `${base}/${f}`);
+        : sections
+        ? sections.flatMap((s) => (s.image ? [s.image] : []))
+        : (data.images ?? []).map((f) => `${base}/${encodePath(f)}`);
 
-      // Read description.txt if present (overrides JSON description for Hebrew)
+      // Read description.txt only when no sections defined (avoid overriding meta with long text)
       const descTxtPath = path.join(ARCH_DIR, e.name, "description.txt");
-      const descHe = fs.existsSync(descTxtPath)
+      const shouldUseTxt = !data.sections && fs.existsSync(descTxtPath);
+      const descHe = shouldUseTxt
         ? fs.readFileSync(descTxtPath, "utf-8").trim()
         : data.description?.he;
       const description = descHe
@@ -77,6 +110,10 @@ function loadArchProjects(): Project[] {
         : data.description;
 
       const fallback = `${ARCH}/placeholder-house-1.svg`;
+      const cover = (data.cover ? `${base}/${encodePath(data.cover)}` : null)
+        ?? images[0]
+        ?? fallback;
+
       const project: Project = {
         slug: data.slug,
         category: "architecture",
@@ -87,9 +124,10 @@ function loadArchProjects(): Project[] {
         location: data.location,
         client: data.client,
         description,
-        cover: images[0] ?? fallback,
+        cover,
         images: images.length ? images : [fallback],
         imageGroups,
+        sections,
       };
       return [project];
     });

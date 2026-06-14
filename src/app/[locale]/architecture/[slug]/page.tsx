@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { getArchProjects, getArchProjectBySlug, type ProjectStatus } from "@/data/projects";
 import ProjectImageTabs from "@/components/ProjectImageTabs";
+import ProjectRichContent from "@/components/ProjectRichContent";
 import type { Metadata } from "next";
 
 const STATUS_MAP: Record<ProjectStatus, { he: string; en: string; dot: string }> = {
@@ -92,36 +93,44 @@ function Content({ slug }: { slug: string }) {
             </Link>
           </aside>
 
-          {/* Main — description + images */}
+          {/* Main — rich sections or description + images */}
           <div className="md:col-span-9">
-            {project.description && (
-              <p className="text-lg md:text-xl text-ink-soft leading-relaxed text-pretty max-w-[60ch] mb-12">
-                {project.description[locale]}
-              </p>
-            )}
-
-            {/* Images — grouped tabs or flat grid */}
-            {project.imageGroups ? (
-              <ProjectImageTabs
-                groups={project.imageGroups}
+            {project.sections ? (
+              <ProjectRichContent
+                sections={project.sections}
                 title={project.title[locale]}
                 locale={locale}
               />
             ) : (
-              <div className="grid gap-3">
-                {project.images.map((src, i) => (
-                  <div key={src} className={`relative overflow-hidden bg-paper-warm ${i === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
-                    <Image
-                      src={src}
-                      alt={`${project.title[locale]} — ${i + 1}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 75vw"
-                      className="object-cover"
-                      priority={i === 0}
-                    />
+              <>
+                {project.description && (
+                  <p className="text-lg md:text-xl text-ink-soft leading-relaxed text-pretty max-w-[60ch] mb-12">
+                    {project.description[locale]}
+                  </p>
+                )}
+                {project.imageGroups ? (
+                  <ProjectImageTabs
+                    groups={project.imageGroups}
+                    title={project.title[locale]}
+                    locale={locale}
+                  />
+                ) : (
+                  <div className="grid gap-3">
+                    {project.images.map((src, i) => (
+                      <div key={src} className={`relative overflow-hidden bg-paper-warm ${i === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
+                        <Image
+                          src={src}
+                          alt={`${project.title[locale]} — ${i + 1}`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 75vw"
+                          className="object-cover"
+                          priority={i === 0}
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                )}
+              </>
             )}
           </div>
         </div>
