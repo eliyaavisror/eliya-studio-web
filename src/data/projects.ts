@@ -28,6 +28,7 @@ export interface Project {
   status?: ProjectStatus;
   description?: { he: string; en: string };
   cover: string;
+  titleBackground?: string;
   images: string[];
   imageGroups?: ImageGroup[];
   sections?: ContentSection[];
@@ -63,6 +64,7 @@ type ProjectJSON = {
   client?: { he: string; en: string };
   description?: { he: string; en: string };
   cover?: string;
+  titleBackground?: string;
   images?: string[];
   imageGroups?: ImageGroupJSON[];
   sections?: ContentSectionJSON[];
@@ -113,6 +115,9 @@ function loadArchProjects(): Project[] {
       const cover = (data.cover ? `${base}/${encodePath(data.cover)}` : null)
         ?? images[0]
         ?? fallback;
+      const titleBackground = data.titleBackground
+        ? `${base}/${encodePath(data.titleBackground)}`
+        : undefined;
 
       const project: Project = {
         slug: data.slug,
@@ -125,6 +130,7 @@ function loadArchProjects(): Project[] {
         client: data.client,
         description,
         cover,
+        titleBackground,
         images: images.length ? images : [fallback],
         imageGroups,
         sections,

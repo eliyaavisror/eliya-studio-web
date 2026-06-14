@@ -15,9 +15,10 @@
     "en": "Ruth and Haim Man"
   },
   "cover": "הדמית הפרויקט.jpg",
+  "titleBackground": "רקע_לוחם.png",
   "description": {
-    "he": "מרכז שיקומי וטיפולי על שטח של 27 דונם — מרחב החלמה לחיילים משוחררים ובני משפחותיהם, המשלב רכיבה טיפולית ועקרונות אדריכלות מיודעת-טראומה.",
-    "en": "A 27-dunam rehabilitative center — a healing space for discharged soldiers and their families, integrating equine therapy and Trauma-Informed Architecture principles."
+    "he": "חוות חוסן, סמוך ליישוב אלון בבנימין, היא מרחב שיקומי וטיפולי המשתרע על פני כ-27 דונם, שתוכנן בקפידה כדי לתמוך בתהליכי החלמה וצמיחה. הפרויקט מהווה יישום פיזי של גישת ה-Trauma-Informed Architecture (אדריכלות מיודעת-טראומה) ומעניק מענה ייעודי ללוחמים, יוצאי צבא ומשפחותיהם, לצד מתחם רכיבה טיפולית לאוכלוסייה הכללית. התכנון רותם את הסביבה הבנויה ככלי טיפולי אקטיבי, ומייצר דיאלוג הרמוני עם נופי הבראשית המדבריים, כדי להעניק למטופלים מרחב שקט, מוגן ועוטף להשתקם בו.",
+    "en": "Hosin Farm, near the settlement of Alon in Binyamin, is a rehabilitative and therapeutic space spanning approximately 27 dunams, carefully designed to support recovery and growth. The project physically embodies the Trauma-Informed Architecture approach, providing dedicated support for combatants, veterans, and their families, alongside an equine therapy center for the general public. The design harnesses the built environment as an active therapeutic tool, creating a harmonious dialogue with the desert landscape, to offer patients a quiet, protected, and enveloping space in which to heal."
   },
   "sections": [
     {
@@ -38,7 +39,8 @@
       "id": "accessibility",
       "title": { "he": "נגישות אוניברסלית", "en": "Universal Accessibility" },
       "he": "כפרויקט המשרת נכי צה\"ל ומשתקמים, הנגישות אינה רק דרישת תקן אלא נקודת המוצא התכנונית. כלל המבנים, השבילים, מגרשי הרכיבה ומרחבי הטיפול תוכננו לאפשר תנועה עצמאית, בטוחה ורציפה במרחב לבעלי מוגבלויות פיזיות.",
-      "en": "As a project serving disabled IDF veterans and those in rehabilitation, accessibility is not merely a code requirement — it is the founding design principle. All buildings, paths, riding arenas, and therapy spaces were designed to allow independent, safe, and continuous movement for individuals with physical disabilities."
+      "en": "As a project serving disabled IDF veterans and those in rehabilitation, accessibility is not merely a code requirement — it is the founding design principle. All buildings, paths, riding arenas, and therapy spaces were designed to allow independent, safe, and continuous movement for individuals with physical disabilities.",
+      "image": "03_נגישות.png"
     },
     {
       "id": "landscape",
