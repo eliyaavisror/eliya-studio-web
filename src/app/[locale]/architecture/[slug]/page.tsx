@@ -22,10 +22,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const project = getArchProjectBySlug(slug);
   if (!project) return {};
-  return { title: project.title.he, description: project.description?.he };
+  const l = locale === "en" ? "en" : "he";
+  return { title: project.title[l], description: project.description?.[l] };
 }
 
 export default async function ArchProjectPage({
@@ -45,8 +46,8 @@ function Content({ slug }: { slug: string }) {
 
   return (
     <>
-      {/* ══ HERO ══ cinematic title over background image ══ */}
-      <section className="relative isolate flex min-h-[68vh] md:min-h-[78vh] flex-col justify-end overflow-hidden bg-ink">
+      {/* ══ HERO ══ title over background image ══ */}
+      <section className="relative isolate flex min-h-[40vh] md:min-h-[52vh] flex-col justify-end overflow-hidden bg-ink">
         {project.titleBackground && (
           <Image
             src={project.titleBackground}
@@ -57,83 +58,79 @@ function Content({ slug }: { slug: string }) {
             priority
           />
         )}
-        {/* Tonal overlay for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/35" />
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(90deg, rgba(40,40,40,0.55) 0%, rgba(40,40,40,0) 55%)" }}
-        />
+        {/* Tonal overlays for legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/30" />
 
-        <div className="container-x relative z-10 pb-12 md:pb-20 pt-36">
+        <div className="container-x relative z-10 pb-8 md:pb-12 pt-32 md:pt-40">
           <Link
             href="/architecture"
-            className="ticker text-paper/70 hover:text-paper transition-colors text-[10px] mb-8 inline-flex items-center gap-2"
+            className="ticker text-paper/70 hover:text-paper transition-colors text-[10px] mb-6 inline-flex items-center gap-2"
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M19 12H5M12 5l-7 7 7 7" />
             </svg>
             {locale === "he" ? "תכנון אדריכלי" : "Architecture"}
           </Link>
 
-          {status && (
-            <div className="mb-5 inline-flex items-center gap-2 border border-paper/25 px-3 py-1.5">
-              <span className={`w-1.5 h-1.5 rounded-full ${status.dot}`} />
-              <span className="ticker text-[10px] text-paper/85">{status[locale]}</span>
-            </div>
-          )}
-
-          <h1 className="text-display-2xl font-bold text-paper text-balance max-w-[16ch] leading-[0.9]">
+          <h1 className="text-display-lg font-bold text-paper text-balance max-w-[18ch] leading-[0.95]">
             {project.title[locale]}
           </h1>
 
-          <div className="mt-7 flex flex-wrap items-center gap-x-8 gap-y-2 text-paper/80">
+          {/* Meta row — status + location + client + year, all inline */}
+          <div className="mt-5 md:mt-6 flex flex-wrap items-center gap-x-5 sm:gap-x-7 gap-y-3 text-paper">
+            {status && (
+              <span className="inline-flex items-center gap-2">
+                <span className={`w-1.5 h-1.5 rounded-full ${status.dot}`} />
+                <span className="text-sm font-medium">{status[locale]}</span>
+              </span>
+            )}
+            {status && <Divider />}
+
             <HeroFact label={locale === "he" ? "מיקום" : "Location"} value={project.location[locale]} />
             {project.client && (
-              <HeroFact label={locale === "he" ? "יזם" : "Client"} value={project.client[locale]} />
+              <>
+                <Divider />
+                <HeroFact label={locale === "he" ? "יזם" : "Client"} value={project.client[locale]} />
+              </>
             )}
+            <Divider />
             <HeroFact label={locale === "he" ? "שנה" : "Year"} value={String(project.year)} />
           </div>
         </div>
       </section>
 
-      {/* ══ OVERVIEW ══ full description + project image ══ */}
-      <section className="section-pad">
-        <div className="container-x grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Text column */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28">
-            <div className="flex items-center gap-3 mb-7">
+      {/* ══ COVER ══ full-width project visualization ══ */}
+      <section className="pt-10 md:pt-14">
+        <div className="container-x">
+          <div className="relative aspect-[4/3] sm:aspect-[16/10] md:aspect-[2/1] overflow-hidden bg-paper-warm">
+            <Image
+              src={project.cover}
+              alt={project.title[locale]}
+              fill
+              sizes="(max-width: 1408px) 100vw, 1408px"
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ DESCRIPTION ══ */}
+      {project.description && (
+        <section className="pt-9 md:pt-14 pb-2">
+          <div className="container-x">
+            <div className="flex items-center gap-3 mb-5 md:mb-6">
               <span className="h-px w-10 bg-accent" />
               <span className="ticker text-[10px] text-accent-dark">
                 {locale === "he" ? "על הפרויקט" : "About the project"}
               </span>
             </div>
-
-            {project.description && (
-              <p className="text-lg md:text-xl text-ink-soft leading-relaxed text-pretty mb-10">
-                {project.description[locale]}
-              </p>
-            )}
-
-            <Link href="/contact" className="btn-primary">
-              {locale === "he" ? "צרו קשר" : "Get in touch"}
-            </Link>
+            <p className="text-base md:text-xl text-ink-soft leading-relaxed text-pretty max-w-[72ch]">
+              {project.description[locale]}
+            </p>
           </div>
-
-          {/* Image column */}
-          <div className="lg:col-span-7">
-            <div className="relative aspect-[4/3] md:aspect-[3/2] overflow-hidden bg-paper-warm">
-              <Image
-                src={project.cover}
-                alt={project.title[locale]}
-                fill
-                sizes="(max-width: 1024px) 100vw, 58vw"
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ══ NUMBERED SECTIONS ══ */}
       {project.sections ? (
@@ -143,7 +140,7 @@ function Content({ slug }: { slug: string }) {
           locale={locale}
         />
       ) : (project.imageGroups || project.images.length > 0) && (
-        <section className="pb-20 md:pb-32">
+        <section className="pt-12 pb-20 md:pb-32">
           <div className="container-x">
             {project.imageGroups ? (
               <ProjectImageTabs
@@ -176,21 +173,25 @@ function Content({ slug }: { slug: string }) {
       )}
 
       {/* ══ BACK CTA ══ */}
-      <section className="py-16 border-t border-ink/10">
-        <div className="container-x flex items-center justify-between gap-8">
+      <section className="py-12 md:py-16 border-t border-ink/10">
+        <div className="container-x flex flex-col sm:flex-row sm:items-center justify-between gap-5 sm:gap-8">
           <Link
             href="/architecture"
             className="ticker link-underline text-ink-muted hover:text-ink transition-colors"
           >
             ← {locale === "he" ? "כל הפרויקטים" : "All projects"}
           </Link>
-          <Link href="/contact" className="btn-secondary">
+          <Link href="/contact" className="btn-secondary self-start sm:self-auto">
             {locale === "he" ? "בואו נדבר על הפרויקט שלכם" : "Let's talk about your project"}
           </Link>
         </div>
       </section>
     </>
   );
+}
+
+function Divider() {
+  return <span aria-hidden className="hidden sm:inline-block h-4 w-px bg-paper/25" />;
 }
 
 function HeroFact({ label, value }: { label: string; value: string }) {
