@@ -58,7 +58,10 @@ export default function Header() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   const isHome = pathname === "/";
-  const useLight = isHome && !scrolled && !mobileOpen;
+  // Architecture project detail pages (/architecture/<slug>) open with a dark hero
+  const isArchProject = /^\/architecture\/[^/]+$/.test(pathname);
+  const darkHero = isHome || isArchProject;
+  const useLight = darkHero && !scrolled && !mobileOpen;
 
   const headerBg = mobileOpen
     ? "bg-white"
