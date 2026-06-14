@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { getArchProjects, getArchProjectBySlug, type ProjectStatus } from "@/data/projects";
 import ProjectImageTabs from "@/components/ProjectImageTabs";
 import ProjectRichContent from "@/components/ProjectRichContent";
+import RichText from "@/components/RichText";
 import type { Metadata } from "next";
 
 const STATUS_MAP: Record<ProjectStatus, { he: string; en: string; dot: string }> = {
@@ -99,10 +100,13 @@ function Content({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {/* ══ COVER ══ full-width project visualization ══ */}
+      {/* ══ COVER ══ full-width project visualization, uncropped ══ */}
       <section className="pt-10 md:pt-14">
         <div className="container-x">
-          <div className="relative aspect-[4/3] sm:aspect-[16/10] md:aspect-[2/1] overflow-hidden bg-paper-warm">
+          <div
+            className="relative w-full overflow-hidden bg-paper-warm"
+            style={{ aspectRatio: project.coverAspect ?? 16 / 9 }}
+          >
             <Image
               src={project.cover}
               alt={project.title[locale]}
@@ -122,9 +126,14 @@ function Content({ slug }: { slug: string }) {
             <h2 className="text-display-lg font-bold tracking-tight mb-6">
               {locale === "he" ? "על הפרויקט" : "About the project"}
             </h2>
-            <p className="text-base md:text-xl font-light text-ink-soft leading-relaxed text-pretty max-w-[68ch] mx-auto">
+            <p className="text-base md:text-xl font-light text-ink-soft leading-relaxed text-pretty max-w-[90ch] mx-auto">
               {project.description[locale]}
             </p>
+            {project.credit && (
+              <p className="mt-6 text-sm md:text-base text-ink-muted max-w-[90ch] mx-auto">
+                <RichText text={project.credit[locale]} />
+              </p>
+            )}
           </div>
         </section>
       )}
@@ -142,7 +151,7 @@ function Content({ slug }: { slug: string }) {
                 </span>
                 <span className="h-px w-8 bg-accent" />
               </div>
-              <h2 className="text-display-lg font-bold tracking-tight max-w-[22ch] mx-auto">
+              <h2 className="text-2xl sm:text-3xl md:text-display-lg font-bold tracking-tight">
                 {locale === "he"
                   ? "העקרונות המרכזיים בתכנון הפרויקט"
                   : "The core principles behind the project's design"}

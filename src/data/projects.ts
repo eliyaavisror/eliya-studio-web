@@ -28,7 +28,9 @@ export interface Project {
   status?: ProjectStatus;
   description?: { he: string; en: string };
   cover: string;
+  coverAspect?: number;
   titleBackground?: string;
+  credit?: { he: string; en: string };
   images: string[];
   imageGroups?: ImageGroup[];
   sections?: ContentSection[];
@@ -36,6 +38,7 @@ export interface Project {
 
 import fs from "fs";
 import path from "path";
+import { getImageSize } from "@/lib/imageSize";
 
 const EXT = "/images/projects/visualizations/exterior";
 const INT = "/images/projects/visualizations/interior";
@@ -63,6 +66,7 @@ type ProjectJSON = {
   location: { he: string; en: string };
   client?: { he: string; en: string };
   description?: { he: string; en: string };
+  credit?: { he: string; en: string };
   cover?: string;
   titleBackground?: string;
   images?: string[];
@@ -119,6 +123,13 @@ function loadArchProjects(): Project[] {
         ? `${base}/${encodePath(data.titleBackground)}`
         : undefined;
 
+      // Real aspect ratio of the cover so it renders uncropped
+      let coverAspect: number | undefined;
+      if (data.cover) {
+        const dim = getImageSize(path.join(ARCH_DIR, e.name, data.cover));
+        if (dim && dim.height > 0) coverAspect = dim.width / dim.height;
+      }
+
       const project: Project = {
         slug: data.slug,
         category: "architecture",
@@ -129,7 +140,9 @@ function loadArchProjects(): Project[] {
         location: data.location,
         client: data.client,
         description,
+        credit: data.credit,
         cover,
+        coverAspect,
         titleBackground,
         images: images.length ? images : [fallback],
         imageGroups,
