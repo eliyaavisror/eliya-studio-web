@@ -45,101 +45,131 @@ function Content({ slug }: { slug: string }) {
 
   return (
     <>
-      {/* HEADER */}
-      <section className="pt-32 md:pt-40 pb-10 md:pb-14 border-b border-ink">
+      {/* ── HERO ── title + meta + description + cover image ── */}
+      <section className="pt-32 md:pt-40 border-b border-ink">
         <div className="container-x">
-          <Link href="/architecture" className="ticker text-ink-muted hover:text-ink transition-colors text-[10px] mb-8 inline-flex items-center gap-2">
+
+          {/* Breadcrumb */}
+          <Link
+            href="/architecture"
+            className="ticker text-ink-muted hover:text-ink transition-colors text-[10px] mb-8 inline-flex items-center gap-2"
+          >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M19 12H5M12 5l-7 7 7 7"/>
             </svg>
             {locale === "he" ? "תכנון אדריכלי" : "Architecture"}
           </Link>
-          <h1 className="text-display-xl font-bold text-balance max-w-[20ch]">
+
+          {/* Title */}
+          <h1 className="text-display-xl font-bold text-balance max-w-[20ch] mb-10 md:mb-14">
             {project.title[locale]}
           </h1>
-        </div>
-      </section>
 
-      {/* CONTENT */}
-      <section className="section-pad">
-        <div className="container-x grid md:grid-cols-12 gap-12 md:gap-16">
+          {/* Hero grid: meta + description | cover image */}
+          <div className="grid md:grid-cols-[1fr_1.6fr] gap-12 md:gap-16 pb-16 md:pb-20 items-start">
 
-          {/* Sidebar — metadata */}
-          <aside className="md:col-span-3 md:sticky md:top-32 self-start">
-            <dl className="divide-y divide-ink/10 border-y border-ink/10">
-              {status && (
-                <MetaItem label={locale === "he" ? "סטטוס" : "Status"}>
-                  <span className="flex items-center gap-2">
-                    <span className={`w-2 h-2 rounded-full flex-shrink-0 ${status.dot}`} />
-                    <span className="font-medium">{status[locale]}</span>
-                  </span>
+            {/* Left column — metadata + description + CTA */}
+            <div className="flex flex-col gap-8">
+              <dl className="divide-y divide-ink/10 border-y border-ink/10">
+                {status && (
+                  <MetaItem label={locale === "he" ? "סטטוס" : "Status"}>
+                    <span className="flex items-center gap-2">
+                      <span className={`w-2 h-2 rounded-full flex-shrink-0 ${status.dot}`} />
+                      <span className="font-medium">{status[locale]}</span>
+                    </span>
+                  </MetaItem>
+                )}
+                <MetaItem label={locale === "he" ? "מיקום" : "Location"}>
+                  {project.location[locale]}
                 </MetaItem>
-              )}
-              <MetaItem label={locale === "he" ? "מיקום" : "Location"}>
-                {project.location[locale]}
-              </MetaItem>
-              {project.client && (
-                <MetaItem label={locale === "he" ? "יזם" : "Client"}>
-                  {project.client[locale]}
+                {project.client && (
+                  <MetaItem label={locale === "he" ? "יזם" : "Client"}>
+                    {project.client[locale]}
+                  </MetaItem>
+                )}
+                <MetaItem label={locale === "he" ? "שנה" : "Year"}>
+                  {project.year}
                 </MetaItem>
+              </dl>
+
+              {project.description && (
+                <p className="text-base md:text-lg text-ink-soft leading-relaxed text-pretty">
+                  {project.description[locale]}
+                </p>
               )}
-              <MetaItem label={locale === "he" ? "שנה" : "Year"}>
-                {project.year}
-              </MetaItem>
-            </dl>
 
-            <Link href="/contact" className="btn-primary w-full mt-8 justify-center">
-              {locale === "he" ? "צרו קשר" : "Get in touch"}
-            </Link>
-          </aside>
+              <Link href="/contact" className="btn-primary self-start">
+                {locale === "he" ? "צרו קשר" : "Get in touch"}
+              </Link>
+            </div>
 
-          {/* Main — rich sections or description + images */}
-          <div className="md:col-span-9">
-            {project.sections ? (
-              <ProjectRichContent
-                sections={project.sections}
-                title={project.title[locale]}
-                locale={locale}
+            {/* Right column — cover image */}
+            <div className="relative min-h-[260px] md:min-h-0 md:self-stretch overflow-hidden bg-paper-warm">
+              <Image
+                src={project.cover}
+                alt={project.title[locale]}
+                fill
+                sizes="(max-width: 768px) 100vw, 55vw"
+                className="object-cover"
+                priority
               />
-            ) : (
-              <>
-                {project.description && (
-                  <p className="text-lg md:text-xl text-ink-soft leading-relaxed text-pretty max-w-[60ch] mb-12">
-                    {project.description[locale]}
-                  </p>
-                )}
-                {project.imageGroups ? (
-                  <ProjectImageTabs
-                    groups={project.imageGroups}
-                    title={project.title[locale]}
-                    locale={locale}
-                  />
-                ) : (
-                  <div className="grid gap-3">
-                    {project.images.map((src, i) => (
-                      <div key={src} className={`relative overflow-hidden bg-paper-warm ${i === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}`}>
-                        <Image
-                          src={src}
-                          alt={`${project.title[locale]} — ${i + 1}`}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 75vw"
-                          className="object-cover"
-                          priority={i === 0}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </>
-            )}
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Back CTA */}
+      {/* ── CONTENT ── rich sections or image gallery ── */}
+      {project.sections ? (
+        <section className="section-pad">
+          <div className="container-x">
+            <ProjectRichContent
+              sections={project.sections}
+              title={project.title[locale]}
+              locale={locale}
+            />
+          </div>
+        </section>
+      ) : (project.imageGroups || project.images.length > 0) && (
+        <section className="section-pad">
+          <div className="container-x">
+            {project.imageGroups ? (
+              <ProjectImageTabs
+                groups={project.imageGroups}
+                title={project.title[locale]}
+                locale={locale}
+              />
+            ) : (
+              <div className="grid gap-3">
+                {project.images.map((src, i) => (
+                  <div
+                    key={src}
+                    className={`relative overflow-hidden bg-paper-warm ${
+                      i === 0 ? "aspect-[16/9]" : "aspect-[4/3]"
+                    }`}
+                  >
+                    <Image
+                      src={src}
+                      alt={`${project.title[locale]} — ${i + 1}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 75vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ── BACK CTA ── */}
       <section className="py-16 border-t border-ink/10">
         <div className="container-x flex items-center justify-between gap-8">
-          <Link href="/architecture" className="ticker link-underline text-ink-muted hover:text-ink transition-colors">
+          <Link
+            href="/architecture"
+            className="ticker link-underline text-ink-muted hover:text-ink transition-colors"
+          >
             ← {locale === "he" ? "כל הפרויקטים" : "All projects"}
           </Link>
           <Link href="/contact" className="btn-secondary">
