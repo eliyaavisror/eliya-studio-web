@@ -61,30 +61,12 @@ function Content({ heroImage }: { heroImage: string }) {
         </div>
       </section>
 
-      {/* INTRO */}
-      <section className="section-pad">
-        <div className="container-x grid md:grid-cols-12 gap-10 md:gap-16 items-start">
-          <div className="md:col-span-4">
-            <p className="ticker text-ink-muted mb-6">01 — פתיחה</p>
-            <p className="index-big">01</p>
-          </div>
-          <div className="md:col-span-8">
-            <h2 className="text-display-lg font-semibold text-balance max-w-[18ch]">
-              {t("intro.title")}
-            </h2>
-            <p className="mt-8 max-w-[60ch] text-lg md:text-xl text-ink-soft leading-relaxed text-pretty">
-              {t("intro.body")}
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* SERVICES — dark inverted grid, 2 cards */}
       <section className="section-pad bg-ink text-paper">
         <div className="container-x">
           <div className="flex flex-wrap items-end justify-between gap-6 pb-8 mb-14 md:mb-16 border-b border-paper/20">
             <div>
-              <p className="ticker text-paper/60 mb-4">02 — שירותים</p>
+              <p className="ticker text-paper/60 mb-4">01 — שירותים</p>
               <h2 className="text-display-lg font-semibold">{t("services.title")}</h2>
             </div>
             <p className="text-sm text-paper/60 max-w-[32ch]">שני תחומי ליבה תחת קורת גג אחת.</p>
@@ -100,7 +82,7 @@ function Content({ heroImage }: { heroImage: string }) {
       {/* CTA */}
       <section className="section-pad bg-paper-warm">
         <div className="container-x text-center max-w-3xl mx-auto">
-          <p className="ticker text-ink-muted mb-6">03 — בואו נתחיל</p>
+          <p className="ticker text-ink-muted mb-6">02 — בואו נתחיל</p>
           <h2 className="text-display-xl font-semibold text-balance">{t("cta.title")}</h2>
           <p className="mt-7 text-lg md:text-xl text-ink-soft text-pretty max-w-[42ch] mx-auto">
             {t("cta.body")}
