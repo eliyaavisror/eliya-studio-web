@@ -20,15 +20,11 @@ export default function ProjectRichContent({ sections, title, locale }: Props) {
             key={section.id}
             className={`py-16 md:py-24 ${tinted ? "bg-paper-warm" : ""}`}
           >
-            <div
-              className={`container-x grid items-center gap-10 lg:gap-16 ${
-                section.image ? "lg:grid-cols-2" : "lg:grid-cols-12"
-              }`}
-            >
+            <div className="container-x grid items-center gap-10 lg:gap-16 lg:grid-cols-12">
               {/* ── Image ── */}
               {section.image && (
                 <div
-                  className={`relative aspect-[4/3] overflow-hidden bg-paper ${
+                  className={`relative aspect-[4/3] overflow-hidden bg-paper lg:col-span-7 ${
                     imageFirst ? "lg:order-1" : "lg:order-2"
                   }`}
                 >
@@ -36,7 +32,7 @@ export default function ProjectRichContent({ sections, title, locale }: Props) {
                     src={section.image}
                     alt={section.title?.[locale] ?? title}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 48vw"
+                    sizes="(max-width: 1024px) 100vw, 58vw"
                     className="object-cover"
                   />
                 </div>
@@ -47,8 +43,8 @@ export default function ProjectRichContent({ sections, title, locale }: Props) {
                 className={
                   section.image
                     ? imageFirst
-                      ? "lg:order-2"
-                      : "lg:order-1"
+                      ? "lg:col-span-5 lg:order-2"
+                      : "lg:col-span-5 lg:order-1"
                     : "lg:col-span-8 lg:col-start-3 text-center"
                 }
               >
