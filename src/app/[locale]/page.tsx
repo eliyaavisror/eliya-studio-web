@@ -1,3 +1,4 @@
+import React from "react";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
@@ -42,14 +43,9 @@ function Content({ heroImage }: { heroImage: string }) {
             {t("hero.title")}
           </h1>
 
-          <div className="mt-12 md:mt-14 grid md:grid-cols-[1fr_auto] gap-8 md:gap-16 items-end">
-            <p className="max-w-[46ch] text-base md:text-lg text-paper/75 leading-relaxed text-pretty">
-              {t("hero.subtitle")}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              <Link href="/architecture" className="btn border border-paper text-paper hover:bg-paper/20">{t("hero.ctaArch")}</Link>
-              <Link href="/visualizations" className="btn border border-paper text-paper hover:bg-paper/20">{t("hero.ctaViz")}</Link>
-            </div>
+          <div className="mt-12 md:mt-14 flex flex-wrap gap-2">
+            <Link href="/architecture" className="btn border border-paper text-paper hover:bg-paper/20">{t("hero.ctaArch")}</Link>
+            <Link href="/visualizations" className="btn border border-paper text-paper hover:bg-paper/20">{t("hero.ctaViz")}</Link>
           </div>
         </div>
 
@@ -66,15 +62,28 @@ function Content({ heroImage }: { heroImage: string }) {
         <div className="container-x">
           <div className="flex flex-wrap items-end justify-between gap-6 pb-8 mb-14 md:mb-16 border-b border-paper/20">
             <div>
-              <p className="ticker text-paper/60 mb-4">01 — שירותים</p>
               <h2 className="text-display-lg font-semibold">{t("services.title")}</h2>
             </div>
-            <p className="text-sm text-paper/60 max-w-[32ch]">שני תחומי ליבה תחת קורת גג אחת.</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-px bg-paper/15">
-            <ServiceCard num="01" title={t("services.architecture.title")} body={t("services.architecture.body")} tags={["בתים","ציבור","משרדים"]} />
-            <ServiceCard num="02" title={t("services.visualizations.title")} body={t("services.visualizations.body")} tags={["חוץ","פנים","אווירה"]} />
+            <ServiceCard
+              icon={
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+                  <path d="M9 21V12h6v9"/>
+                </svg>
+              }
+              title={t("services.architecture.title")} body={t("services.architecture.body")} tags={["בתים","ציבור","משרדים"]} />
+            <ServiceCard
+              icon={
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
+                </svg>
+              }
+              title={t("services.visualizations.title")} body={t("services.visualizations.body")} tags={["חוץ","פנים","אווירה"]} />
           </div>
         </div>
       </section>
@@ -82,7 +91,6 @@ function Content({ heroImage }: { heroImage: string }) {
       {/* CTA */}
       <section className="section-pad bg-paper-warm">
         <div className="container-x text-center max-w-3xl mx-auto">
-          <p className="ticker text-ink-muted mb-6">02 — בואו נתחיל</p>
           <h2 className="text-display-xl font-semibold text-balance">{t("cta.title")}</h2>
           <p className="mt-7 text-lg md:text-xl text-ink-soft text-pretty max-w-[42ch] mx-auto">
             {t("cta.body")}
@@ -96,12 +104,12 @@ function Content({ heroImage }: { heroImage: string }) {
   );
 }
 
-function ServiceCard({ num, title, body, tags }: { num: string; title: string; body: string; tags: string[] }) {
+function ServiceCard({ icon, title, body, tags }: { icon: React.ReactNode; title: string; body: string; tags: string[] }) {
   return (
     <div className="bg-ink p-10 md:p-12 lg:p-14 min-h-[380px] flex flex-col">
-      <p className="text-[64px] md:text-[88px] font-extralight tracking-tightest leading-none mb-8 text-paper/85">
-        {num}
-      </p>
+      <div className="mb-8 text-paper/80">
+        {icon}
+      </div>
       <h3 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4">{title}</h3>
       <p className="text-paper/65 leading-relaxed text-sm md:text-base flex-1">{body}</p>
       <div className="mt-6 flex flex-wrap gap-2">

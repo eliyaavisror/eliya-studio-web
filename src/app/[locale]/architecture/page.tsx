@@ -77,7 +77,7 @@ function Content({ heroImage }: { heroImage: string }) {
         </div>
         <div className="container-x relative">
           <p className="ticker text-ink-muted mb-10">
-            {t("hero.eyebrow")} — אדריכלות / 01
+            {t("hero.eyebrow")}
           </p>
           <h1 className="text-display-2xl font-bold text-balance max-w-[18ch]">
             {t("hero.title")}
@@ -103,27 +103,42 @@ function Content({ heroImage }: { heroImage: string }) {
         </a>
       </section>
 
-      {/* PROCESS */}
-      <section className="flex-1 py-10 md:py-14 border-t border-ink">
+      {/* SPECIALTIES — dark inverted */}
+      <section className="section-pad flex-1 bg-ink text-paper">
         <div className="container-x">
-          <div className="grid md:grid-cols-12 gap-6 md:gap-12 mb-8 md:mb-10 items-end">
-            <div className="md:col-span-4">
-              <p className="ticker text-ink-muted mb-3">01 — תהליך</p>
-            </div>
-            <div className="md:col-span-8">
-              <h2 className="text-display-lg font-semibold text-balance max-w-[18ch]">
-                {t("process.title")}
-              </h2>
-            </div>
+          <div className="mb-8 md:mb-10">
+            <p className="ticker text-paper/60 mb-4">{t("specialties.title")}</p>
+          </div>
+          <ul className="flex flex-wrap justify-center gap-10 md:gap-14">
+            {specialties.map((item, i) => (
+              <li key={item} className="flex flex-col items-center gap-4 text-center">
+                <span className="text-paper/70 [&>svg]:w-10 [&>svg]:h-10">
+                  {SPECIALTY_ICONS[i]}
+                </span>
+                <span className="text-sm md:text-base font-medium tracking-tight">
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      </div>
+
+      {/* PROCESS */}
+      <section className="section-pad border-t border-ink/10">
+        <div className="container-x">
+          <div className="mb-5">
+            <p className="ticker text-ink-muted mb-3">{t("process.title")}</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/15">
             {steps.map((step) => (
-              <div key={step.number} className="bg-paper p-6 md:p-8 flex flex-col">
-                <p className="text-[36px] md:text-[44px] font-extralight tracking-tightest leading-none mb-3 text-paper-line">
+              <div key={step.number} className="bg-paper p-5 md:p-6 flex flex-col">
+                <p className="text-[28px] md:text-[34px] font-extralight tracking-tightest leading-none mb-2 text-paper-line">
                   {step.number}
                 </p>
-                <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-2">
+                <h3 className="text-base md:text-lg font-semibold tracking-tight mb-1">
                   {step.title}
                 </h3>
                 <p className="text-ink-soft leading-relaxed text-sm">
@@ -134,45 +149,13 @@ function Content({ heroImage }: { heroImage: string }) {
           </div>
         </div>
       </section>
-      </div>
-
-      {/* SPECIALTIES — dark inverted */}
-      <section className="section-pad bg-ink text-paper">
-        <div className="container-x">
-          <div className="grid md:grid-cols-12 gap-8 md:gap-16">
-            <div className="md:col-span-4">
-              <p className="ticker text-paper/60 mb-4">02 — תמחויות</p>
-              <h2 className="text-display-lg font-semibold">
-                {t("specialties.title")}
-              </h2>
-            </div>
-            <div className="md:col-span-8">
-              <ul className="flex flex-col divide-y divide-paper/10">
-                {specialties.map((item, i) => (
-                  <li key={item} className="flex items-center gap-5 py-5 group">
-                    <span className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full border border-paper/20 text-paper/70 group-hover:border-paper/50 group-hover:text-paper transition-colors duration-300">
-                      {SPECIALTY_ICONS[i]}
-                    </span>
-                    <span className="text-lg md:text-xl font-medium tracking-tight transition-transform duration-300 ease-smooth group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* SELECTED PROJECTS */}
       {getArchProjects().length > 0 && (
         <section id="projects" className="section-pad">
           <div className="container-x">
             <div className="pb-8 mb-14 border-b border-ink">
-              <p className="ticker text-ink-muted mb-4">03 — פרויקטים</p>
-              <h2 className="text-display-lg font-semibold">
-                {locale === "he" ? "פרויקטים אדריכליים" : "Architecture projects"}
-              </h2>
+              <p className="ticker text-ink-muted mb-4">{locale === "he" ? "פרויקטים" : "Projects"}</p>
             </div>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12">
               {getArchProjects().map((p, i) => (
@@ -191,7 +174,6 @@ function Content({ heroImage }: { heroImage: string }) {
       {/* CTA */}
       <section className="section-pad bg-paper-warm">
         <div className="container-x text-center max-w-3xl mx-auto">
-          <p className="ticker text-ink-muted mb-6">04 — בואו נתחיל</p>
           <h2 className="text-display-xl font-semibold text-balance">{t("cta.title")}</h2>
           <p className="mt-7 text-lg md:text-xl text-ink-soft text-pretty">{t("cta.body")}</p>
           <Link href="/contact" className="btn-primary mt-10">

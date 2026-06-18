@@ -110,8 +110,8 @@
 
   /* Variation B "ticker" — small uppercase metadata label */
   .ticker {
-    @apply text-[12px] font-medium uppercase;
-    letter-spacing: 0.4em;
+    @apply text-[14px] font-medium uppercase;
+    letter-spacing: 0.2em;
   }
 
   /* Old eyebrow kept for compatibility */

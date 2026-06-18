@@ -48,11 +48,12 @@ function Content({ heroImage }: { heroImage: string }) {
         </div>
         <div className="container-x relative">
           <p className="ticker text-ink-muted mb-10">
-            {t("hero.eyebrow")} — אודות / 03
+            {t("hero.eyebrow")}
           </p>
           <h1 className="text-display-2xl font-bold text-balance max-w-[16ch]">
             {t("hero.title")}
           </h1>
+          <div className="mt-12 md:mt-14 h-20" aria-hidden="true" />
         </div>
         <a
           href="#about-more"
@@ -70,16 +71,14 @@ function Content({ heroImage }: { heroImage: string }) {
       </section>
 
       {/* STORY */}
-      <section id="about-more" className="section-pad border-t border-b border-ink">
+      <section id="about-more" className="section-pad bg-ink text-paper">
         <div className="container-x grid md:grid-cols-12 gap-8 md:gap-16 items-start">
           <div className="md:col-span-4">
-            <p className="ticker text-ink-muted mb-4">01 — סיפור</p>
-            <p className="index-big">01</p>
-            <h2 className="mt-2 text-display-lg font-semibold">{t("story.title")}</h2>
+            <h2 className="text-display-lg font-semibold">{t("story.title")}</h2>
           </div>
           <div className="md:col-span-8 flex flex-col gap-6 max-w-[60ch]">
-            <p className="text-lg md:text-xl text-ink-soft leading-relaxed text-pretty">{t("story.body1")}</p>
-            <p className="text-lg text-ink-soft leading-relaxed text-pretty">{t("story.body2")}</p>
+            <p className="text-lg md:text-xl text-paper/75 leading-relaxed text-pretty">{t("story.body1")}</p>
+            <p className="text-lg text-paper/75 leading-relaxed text-pretty">{t("story.body2")}</p>
           </div>
         </div>
       </section>
@@ -89,14 +88,11 @@ function Content({ heroImage }: { heroImage: string }) {
       <section className="section-pad">
         <div className="container-x grid md:grid-cols-12 gap-8 md:gap-16 items-start">
           <div className="md:col-span-4">
-            <p className="ticker text-ink-muted mb-4">02 — אדריכלות</p>
-            <p className="index-big">02</p>
-            <h2 className="mt-2 text-display-lg font-semibold">{t("arch.title")}</h2>
+            <h2 className="text-display-lg font-semibold">{t("arch.title")}</h2>
           </div>
           <div className="md:col-span-8 flex flex-col gap-6 max-w-[60ch]">
             <p className="text-lg text-ink-soft leading-relaxed text-pretty">{t("arch.body1")}</p>
             <p className="text-lg text-ink-soft leading-relaxed text-pretty">{t("arch.body2")}</p>
-            <p className="text-lg text-ink-soft leading-relaxed text-pretty">{t("arch.body3")}</p>
           </div>
         </div>
       </section>
@@ -105,9 +101,7 @@ function Content({ heroImage }: { heroImage: string }) {
       <section className="section-pad bg-paper-warm">
         <div className="container-x grid md:grid-cols-12 gap-8 md:gap-16 items-start">
           <div className="md:col-span-4">
-            <p className="ticker text-ink-muted mb-4">03 — הדמיות</p>
-            <p className="index-big">03</p>
-            <h2 className="mt-2 text-display-lg font-semibold">{t("viz.title")}</h2>
+            <h2 className="text-display-lg font-semibold">{t("viz.title")}</h2>
           </div>
           <div className="md:col-span-8 flex flex-col gap-6 max-w-[60ch]">
             <p className="text-lg text-ink-soft leading-relaxed text-pretty">{t("viz.body1")}</p>
@@ -126,7 +120,6 @@ function Content({ heroImage }: { heroImage: string }) {
       {/* CTA */}
       <section className="section-pad bg-ink text-paper">
         <div className="container-x text-center max-w-3xl mx-auto">
-          <p className="ticker text-paper/60 mb-6">04 — בואו נתחיל</p>
           <h2 className="text-display-xl font-semibold text-balance">{t("cta.title")}</h2>
           <p className="mt-7 text-lg md:text-xl text-paper/70 text-pretty">{t("cta.body")}</p>
           <Link href="/contact" className="btn-on-dark mt-10">

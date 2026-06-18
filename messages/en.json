@@ -33,11 +33,11 @@
       "title": "What we do",
       "architecture": {
         "title": "Architectural Design",
-        "body": "From private homes to public buildings. Functional, aesthetic planning tailored to site and regulation."
+        "body": "From private homes to public buildings. Functional, aesthetic planning tailored to client and site."
       },
       "visualizations": {
         "title": "3D Visualization",
-        "body": "High-resolution photorealistic renders — exterior, interior, day and night atmospheres."
+        "body": "High-resolution realistic renders — exterior, interior, day and night atmospheres."
       },
       "consulting": {
         "title": "Consulting & Interior Design",
@@ -59,7 +59,7 @@
     "hero": {
       "eyebrow": "Architectural Design",
       "title": "Architecture that begins with space, not template",
-      "body": "We design houses, public buildings, and offices through careful listening — to the site, to the client, to the function. Every project is a translation of daily life into precise architectural language."
+      "body": "We design every project through careful listening — to the site and to the client — shaping the precise space for your unique story."
     },
     "process": {
       "title": "Our process",
@@ -148,20 +148,20 @@
     },
     "story": {
       "title": "Our story",
-      "body1": "The studio was founded and is led by Eliya Eidelman, a licensed architect holding a B.Arch in Architecture and a graduate of the Bezalel Academy of Arts and Design.",
-      "body2": "The studio operates from an innovative vision that combines a deep understanding of design language and spatial thinking with the most advanced cutting-edge tools on the market. Our work is grounded in advanced BIM methodology and the integration of artificial intelligence (AI), enabling maximum planning precision, outstanding visual simulations, and the ability to solve the unique complexity of each project. Our extensive professional experience and mastery of tomorrow's technologies ensure a complete, personalized, and uncompromising architectural response."
+      "body1": "The studio was founded and led by Eliya Eidelman, a licensed architect, graduate of the Bezalel Academy of Arts and Design, and holder of a B.Arch in Architecture.",
+      "body2": "The studio operates from an innovative vision combining deep spatial thinking with the most advanced design and visualization tools on the market. Our process is grounded in BIM methodology and the integration of artificial intelligence, enabling maximum precision, outstanding visual simulations, and intelligent resolution of project complexity. The combination of rich professional experience and tomorrow's technologies ensures a complete, personalized, and uncompromising architectural response."
     },
     "arch": {
       "title": "Architectural Design",
-      "body1": "At our architecture studio, we operate from a connection between humanity, technology, and nature. Design begins with the person — their needs, feelings, and way of life — and expands outward to the place and the environment in which it exists.",
-      "body2": "We use advanced technological tools to sharpen ideas, streamline processes, and refine decisions, but always through a human lens rather than a purely technical one. Nature is a partner in every design — in light, air, materiality, and harmonious integration within the urban landscape.",
-      "body3": "We accompany every project from the initial concept to the last detail in execution, believing that good architecture creates spaces that feel right, function well, and endure over time."
+      "body1": "We believe that good architecture creates spaces that feel right, function well, and stand the test of time. Our design process begins with the person — their needs, feelings, and way of life — and expands outward to the place, nature, and environment in which the building exists.",
+      "body2": "We harness cutting-edge technological tools to sharpen ideas and streamline processes, always through a human, sensitive, and attentive lens. Nature is a full creative partner in our work — through the intelligent use of light, air, natural materials, and harmonious integration into the surrounding landscape. We accompany every project from the first concept through the last detail in execution.",
+      "body3": ""
     },
     "viz": {
       "title": "The Visualization Studio",
-      "body1": "Our studio specializes in architectural visualization. For us, renders are far more than a planning tool — they are an artistic language that bridges idea and reality, turning a vision into a vivid and tangible image.",
-      "body2": "Thanks to our architectural background, we create visualizations that are not only visually impressive but also faithful to the design, precise down to the last detail, and authentically reflect the architectural vision.",
-      "body3": "Our goal is to bring ideas to life, inspire, and provide clients with an accurate representation of the project before construction begins. We believe quality visualization opens a window into the designer's imagination and lets clients experience the vision as close to reality as possible.",
+      "body1": "As a studio specializing in architectural visualization, 3D for us is far more than a work tool. It is an artistic language that bridges idea and reality, breathing life into the design vision.",
+      "body2": "Thanks to our professional architectural background, the visualizations we produce are not only visually impressive — they are fully faithful to the plans, meticulous down to the last detail, and reflect the architecture in the most authentic way possible.",
+      "body3": "Our goal is to inspire and provide clients with a tangible, precise experience of the project before the first brick is laid. We open a window into the world of tomorrow, allowing people to experience the space as close to reality as possible.",
       "clients": "Our clients include leading real-estate companies and top-tier architecture firms."
     },
     "clientsTitle": "Clients & partners",

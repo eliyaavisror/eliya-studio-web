@@ -48,12 +48,12 @@ function Content({ heroImage }: { heroImage: string }) {
         </div>
         <div className="container-x relative">
           <p className="ticker text-ink-muted mb-10">
-            {t("hero.eyebrow")} — צרו קשר / 04
+            {t("hero.eyebrow")}
           </p>
           <h1 className="text-display-2xl font-bold text-balance max-w-[16ch]">
             {t("hero.title")}
           </h1>
-          <div className="mt-12 md:mt-14 grid md:grid-cols-12 gap-8 items-end">
+          <div className="mt-12 md:mt-14 grid md:grid-cols-12 gap-8 items-end min-h-20">
             <p className="md:col-span-7 max-w-[52ch] text-lg md:text-xl text-ink-soft leading-relaxed text-pretty">
               {t("hero.body")}
             </p>
@@ -78,10 +78,10 @@ function Content({ heroImage }: { heroImage: string }) {
       </section>
 
       {/* CONTACT GRID */}
-      <section id="contact-grid" className="flex-1 py-14 md:py-20 border-t border-ink">
+      <section id="contact-grid" className="section-pad border-t border-ink">
         <div className="container-x grid md:grid-cols-12 gap-12 md:gap-16">
           <aside className="md:col-span-4">
-            <p className="ticker text-ink-muted mb-8">01 — פרטי התקשרות</p>
+            <p className="ticker text-ink-muted mb-8">{locale === "he" ? "פרטי התקשרות" : "Contact details"}</p>
 
             {/* Contact rows */}
             <div className="divide-y divide-ink/12 border-y border-ink/12">
@@ -178,7 +178,6 @@ function Content({ heroImage }: { heroImage: string }) {
           </aside>
 
           <div className="md:col-span-8">
-            <p className="ticker text-ink-muted mb-4">02 — שלחו פנייה</p>
             <h2 className="text-display-lg font-semibold mb-10">
               {t("form.title")}
             </h2>

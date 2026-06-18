@@ -87,7 +87,7 @@ function Content({ heroImage, images }: { heroImage: string; images: GalleryImag
         </div>
         <div className="container-x relative">
           <p className="ticker text-ink-muted mb-10">
-            {t("hero.eyebrow")} — הדמיות / 02
+            {t("hero.eyebrow")}
           </p>
           <h1 className="text-display-2xl font-bold text-balance max-w-[18ch]">
             {t("hero.title")}
@@ -117,17 +117,10 @@ function Content({ heroImage, images }: { heroImage: string; images: GalleryImag
       </section>
 
       {/* TYPES — dark inverted grid */}
-      <section className="flex-1 py-10 md:py-14 bg-ink text-paper">
+      <section className="section-pad bg-ink text-paper">
         <div className="container-x">
-          <div className="grid md:grid-cols-12 gap-6 md:gap-12 mb-8 md:mb-10 items-end">
-            <div className="md:col-span-4">
-              <p className="ticker text-paper/60 mb-3">01 — סוגי הדמיות</p>
-            </div>
-            <div className="md:col-span-8">
-              <h2 className="text-display-lg font-semibold text-balance max-w-[18ch]">
-                {t("types.title")}
-              </h2>
-            </div>
+          <div className="mb-8 md:mb-10">
+            <p className="ticker text-paper/60 mb-3">{t("types.title")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-paper/15">
@@ -154,12 +147,7 @@ function Content({ heroImage, images }: { heroImage: string; images: GalleryImag
       <section id="gallery" className="section-pad">
         <div className="container-x">
           <div className="flex flex-wrap items-end justify-between gap-6 pb-8 mb-14 border-b border-ink">
-            <div>
-              <p className="ticker text-ink-muted mb-4">02 — גלריה</p>
-              <h2 className="text-display-lg font-semibold">
-                {t("gallery.title")}
-              </h2>
-            </div>
+            <p className="ticker text-ink-muted">{t("gallery.title")}</p>
             <p className="ticker text-ink-muted">100+ פרויקטים</p>
           </div>
           <VisualizationGallery images={images} locale={locale} />
@@ -169,7 +157,6 @@ function Content({ heroImage, images }: { heroImage: string; images: GalleryImag
       {/* CTA */}
       <section className="section-pad bg-paper-warm">
         <div className="container-x text-center max-w-3xl mx-auto">
-          <p className="ticker text-ink-muted mb-6">03 — בואו נתחיל</p>
           <h2 className="text-display-xl font-semibold text-balance">{t("cta.title")}</h2>
           <p className="mt-7 text-lg md:text-xl text-ink-soft text-pretty">{t("cta.body")}</p>
           <Link href="/contact" className="btn-primary mt-10">
