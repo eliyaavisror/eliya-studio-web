@@ -25,7 +25,7 @@ export default function LocaleSwitcher({ colorClass = "text-ink" }: { colorClass
       onClick={handleClick}
       disabled={isPending}
       aria-label={`${t("language")}: ${switchTo === "en" ? "English" : "עברית"}`}
-      className={`text-xs uppercase tracking-[0.2em] font-medium hover:opacity-60 transition-opacity disabled:opacity-40 min-h-[44px] min-w-[44px] inline-flex items-center justify-center ${colorClass}`}
+      className={`text-xs uppercase tracking-[0.2em] font-bold hover:opacity-60 transition-opacity disabled:opacity-40 min-h-[44px] min-w-[44px] inline-flex items-center justify-center ${colorClass}`}
     >
       {label}
     </button>

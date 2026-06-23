@@ -104,13 +104,13 @@ function Content({ heroImage }: { heroImage: string }) {
           <div className="mb-8 md:mb-10">
             <p className="ticker text-paper/60 mb-4">{t("specialties.title")}</p>
           </div>
-          <ul className="flex flex-wrap justify-center gap-14 md:gap-24">
+          <ul className="grid grid-cols-4 gap-4 md:gap-16">
             {specialties.map((item, i) => (
-              <li key={item} className="flex flex-col items-center gap-4 text-center">
-                <span className="text-paper/70 [&>svg]:w-10 [&>svg]:h-10">
+              <li key={item} className="group flex flex-col items-center gap-3 md:gap-4 text-center [perspective:400px]">
+                <span className="text-paper/70 [&>svg]:w-10 [&>svg]:h-10 md:[&>svg]:w-14 md:[&>svg]:h-14 transition-transform duration-500 ease-in-out group-hover:[transform:rotateY(360deg)]">
                   {SPECIALTY_ICONS[i]}
                 </span>
-                <span className="text-sm md:text-base font-medium tracking-tight">
+                <span className="text-xs md:text-base font-medium tracking-tight leading-snug">
                   {item}
                 </span>
               </li>
@@ -121,7 +121,7 @@ function Content({ heroImage }: { heroImage: string }) {
       </div>
 
       {/* PROCESS */}
-      <section className="section-pad border-t border-ink/10">
+      <section className="pt-12 md:pt-16 pb-10 md:pb-14 border-t border-ink/10">
         <div className="container-x">
           <p className="ticker text-ink-muted mb-8 md:mb-10">{t("process.title")}</p>
           <ProcessAccordion steps={steps} />
@@ -130,9 +130,9 @@ function Content({ heroImage }: { heroImage: string }) {
 
       {/* SELECTED PROJECTS */}
       {getArchProjects().length > 0 && (
-        <section id="projects" className="section-pad">
+        <section id="projects" className="pt-10 md:pt-14 pb-20 md:pb-32 lg:pb-40">
           <div className="container-x">
-            <div className="pb-8 mb-14 border-b border-ink">
+            <div className="pb-4 mb-8 border-b border-ink/20">
               <p className="ticker text-ink-muted mb-4">{locale === "he" ? "פרויקטים" : "Projects"}</p>
             </div>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12">

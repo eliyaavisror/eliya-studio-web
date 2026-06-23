@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
@@ -16,6 +16,9 @@ export default async function HomePage({
 
 function Content({ heroImage }: { heroImage: string }) {
   const t = useTranslations("home");
+  const locale = useLocale() as "he" | "en";
+  const isHe = locale === "he";
+
 
   return (
     <>
@@ -36,24 +39,18 @@ function Content({ heroImage }: { heroImage: string }) {
         {/* Main content — vertically centered in remaining viewport space */}
         <div className="container-x relative flex-1 flex flex-col justify-center">
           <p className="ticker text-paper/70 mb-8">
-            {t("hero.eyebrow")} — 2018 / {new Date().getFullYear()}
+            {t("hero.eyebrow")}
           </p>
 
           <h1 className="text-display-2xl font-bold text-balance max-w-[16ch]">
             {t("hero.title")}
           </h1>
 
-          <div className="mt-12 md:mt-14 flex flex-wrap gap-2">
-            <Link href="/architecture" className="btn border border-paper text-paper hover:bg-paper/20">{t("hero.ctaArch")}</Link>
-            <Link href="/visualizations" className="btn border border-paper text-paper hover:bg-paper/20">{t("hero.ctaViz")}</Link>
-          </div>
         </div>
 
-        {/* Stats bar — pinned to bottom */}
-        <div className="container-x relative pt-5 border-t border-paper/20 flex flex-wrap items-center justify-between gap-4 ticker text-paper/55">
-          <span>100+ פרויקטים</span>
-          <span className="hidden md:inline">אדריכלות / הדמיות</span>
-          <span>↓ גלול</span>
+        {/* Scroll hint — centered */}
+        <div className="container-x relative pt-5 border-t border-paper/20 flex justify-center">
+          <span className="ticker text-paper text-sm tracking-widest">{isHe ? "↓ גלול" : "↓ Scroll"}</span>
         </div>
       </section>
 
@@ -66,16 +63,19 @@ function Content({ heroImage }: { heroImage: string }) {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-px bg-paper/15">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
             <ServiceCard
+              href="/architecture"
               icon={
                 <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
                   <path d="M9 21V12h6v9"/>
                 </svg>
               }
-              title={t("services.architecture.title")} body={t("services.architecture.body")} tags={["בתים","ציבור","משרדים"]} />
+              title={t("services.architecture.title")} body={t("services.architecture.body")}
+              tags={isHe ? ["בתים","ציבור","משרדים"] : ["Homes","Public","Offices"]} />
             <ServiceCard
+              href="/visualizations"
               icon={
                 <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M12 2L2 7l10 5 10-5-10-5z"/>
@@ -83,7 +83,8 @@ function Content({ heroImage }: { heroImage: string }) {
                   <path d="M2 12l10 5 10-5"/>
                 </svg>
               }
-              title={t("services.visualizations.title")} body={t("services.visualizations.body")} tags={["חוץ","פנים","אווירה"]} />
+              title={t("services.visualizations.title")} body={t("services.visualizations.body")}
+              tags={isHe ? ["חוץ","פנים","אווירה"] : ["Exterior","Interior","Atmosphere"]} />
           </div>
         </div>
       </section>
@@ -104,9 +105,19 @@ function Content({ heroImage }: { heroImage: string }) {
   );
 }
 
-function ServiceCard({ icon, title, body, tags }: { icon: React.ReactNode; title: string; body: string; tags: string[] }) {
+function ServiceCard({ href, icon, title, body, tags }: { href: string; icon: React.ReactNode; title: string; body: string; tags: string[] }) {
   return (
-    <div className="bg-ink p-10 md:p-12 lg:p-14 min-h-[380px] flex flex-col">
+    <Link
+      href={href}
+      className="group bg-ink rounded-2xl p-10 md:p-12 lg:p-14 min-h-[380px] flex flex-col
+        ring-1 ring-inset ring-paper/10
+        transition-all duration-200
+        hover:ring-paper/20
+        hover:shadow-[inset_0_4px_14px_rgba(0,0,0,0.45)]
+        hover:scale-[0.992]
+        active:scale-[0.985]
+        active:shadow-[inset_0_6px_20px_rgba(0,0,0,0.55)]"
+    >
       <div className="mb-8 text-paper/80">
         {icon}
       </div>
@@ -119,6 +130,6 @@ function ServiceCard({ icon, title, body, tags }: { icon: React.ReactNode; title
           </span>
         ))}
       </div>
-    </div>
+    </Link>
   );
 }

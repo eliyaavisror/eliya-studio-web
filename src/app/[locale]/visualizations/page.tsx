@@ -146,9 +146,8 @@ function Content({ heroImage, images }: { heroImage: string; images: GalleryImag
       {/* GALLERY */}
       <section id="gallery" className="section-pad">
         <div className="container-x">
-          <div className="flex flex-wrap items-end justify-between gap-6 pb-8 mb-14 border-b border-ink">
+          <div className="pb-8 mb-14 border-b border-ink">
             <p className="ticker text-ink-muted">{t("gallery.title")}</p>
-            <p className="ticker text-ink-muted">100+ פרויקטים</p>
           </div>
           <VisualizationGallery images={images} locale={locale} />
         </div>
