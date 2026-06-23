@@ -103,7 +103,7 @@ function Content({ heroImage }: { heroImage: string }) {
           <div className="mb-8 md:mb-10">
             <p className="ticker text-paper/60 mb-4">{t("specialties.title")}</p>
           </div>
-          <ul className="flex flex-wrap justify-center gap-10 md:gap-14">
+          <ul className="flex flex-wrap justify-center gap-14 md:gap-24">
             {specialties.map((item, i) => (
               <li key={item} className="flex flex-col items-center gap-4 text-center">
                 <span className="text-paper/70 [&>svg]:w-10 [&>svg]:h-10">
