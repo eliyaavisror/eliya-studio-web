@@ -66,23 +66,28 @@
       "steps": [
         {
           "number": "01",
-          "title": "Discovery",
-          "body": "Mapping needs, site visit, understanding budget and permits."
+          "title": "Discovery & Program Definition",
+          "body": "Needs mapping, site visit, and budget review. We present the property's potential to private clients, and conduct feasibility studies, building rights, and zoning analysis for developers."
         },
         {
           "number": "02",
-          "title": "Conceptual design",
-          "body": "Initial sketches, mass and function alternatives, zoning fit."
+          "title": "Conceptual Design & Concept",
+          "body": "Translating the program into space and structure through sketches and design alternatives. The process is supported by 3D tools that deliver an experience for private clients and decision tools for developers."
         },
         {
           "number": "03",
-          "title": "Detailed design",
-          "body": "Working drawings, sections, elevations, details, technical specs."
+          "title": "Licensing & Permit Submission",
+          "body": "Full management in the \"Rishui Zamin\" system — from information extraction to permit issuance. Handled meticulously to shorten timelines for developers, while navigating bureaucracy for private clients."
         },
         {
           "number": "04",
-          "title": "Construction support",
-          "body": "Site supervision, consultant coordination, contractor support."
+          "title": "Detailed Design & Systems Coordination",
+          "body": "Production of working drawings, sections, elevations, and building details. This phase includes full coordination with project consultants, maintaining architectural quality within budget."
+        },
+        {
+          "number": "05",
+          "title": "Construction Support & Supervision",
+          "body": "Close site supervision, contractor coordination, and real-time problem solving. We ensure peace of mind for private clients and protect the economic interests of developers."
         }
       ]
     },

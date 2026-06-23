@@ -126,7 +126,7 @@ function Content({ heroImage }: { heroImage: string }) {
             <p className="ticker text-ink-muted mb-3">{t("process.title")}</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-ink/15">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-px bg-ink/15">
             {steps.map((step) => (
               <div key={step.number} className="bg-paper p-5 md:p-6 flex flex-col">
                 <p className="text-[28px] md:text-[34px] font-extralight tracking-tightest leading-none mb-2 text-paper-line">
