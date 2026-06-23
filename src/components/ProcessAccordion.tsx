@@ -18,9 +18,38 @@ export default function ProcessAccordion({ steps }: { steps: Step[] }) {
   const [openIndex, setOpenIndex] = useState<number>(0);
 
   return (
-    <div className="grid lg:grid-cols-[3fr_2fr]">
-      {/* Image panel */}
-      <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[460px] overflow-hidden bg-ink/10">
+    <div className="grid grid-cols-[auto_1fr]">
+      {/* Numbers strip — column 1: RIGHT in RTL, LEFT in LTR */}
+      <div className="w-14 md:w-16 flex flex-col bg-ink divide-y divide-paper/10">
+        {steps.map((step, i) => {
+          const isActive = i === openIndex;
+          return (
+            <button
+              key={step.number}
+              onClick={() => setOpenIndex(i)}
+              aria-label={step.title}
+              aria-pressed={isActive}
+              className={`flex-1 flex items-center justify-center transition-colors duration-200 ${
+                isActive
+                  ? "bg-paper/12 text-paper"
+                  : "text-paper/30 hover:text-paper/60"
+              }`}
+            >
+              <span
+                className={`text-xs tabular-nums tracking-[0.15em] ${
+                  isActive ? "font-semibold" : "font-light"
+                }`}
+              >
+                {step.number}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Image + text overlay — column 2 */}
+      <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[480px] overflow-hidden bg-ink">
+        {/* Background images — crossfade */}
         {steps.map((step, i) => (
           <div
             key={step.number}
@@ -32,82 +61,38 @@ export default function ProcessAccordion({ steps }: { steps: Step[] }) {
               src={STEP_IMAGES[i] ?? STEP_IMAGES[0]}
               alt=""
               fill
-              sizes="(max-width: 1024px) 100vw, 60vw"
+              sizes="(max-width: 1024px) 100vw, 95vw"
               className="object-cover"
               style={{
-                filter: "grayscale(1) brightness(1.1) contrast(0.75) saturate(0)",
+                filter:
+                  "grayscale(1) brightness(0.85) contrast(0.75) saturate(0)",
               }}
               aria-hidden="true"
             />
           </div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
-        <p className="absolute bottom-5 start-7 text-paper/20 text-[clamp(5rem,9vw,7.5rem)] font-extralight leading-none tabular-nums select-none pointer-events-none">
-          {steps[openIndex]?.number}
-        </p>
-      </div>
 
-      {/* Steps list */}
-      <div className="bg-paper divide-y divide-ink/10 border-t border-ink/10 lg:border-t-0 lg:border-s border-ink/10">
-        {steps.map((step, i) => {
-          const isOpen = openIndex === i;
-          return (
-            <button
-              key={step.number}
-              onClick={() => setOpenIndex(i)}
-              className={`w-full px-6 py-5 flex flex-col text-start transition-colors duration-200 ${
-                isOpen ? "bg-ink text-paper" : "hover:bg-paper-warm"
-              }`}
-              aria-expanded={isOpen}
-            >
-              <div className="flex items-center justify-between gap-2 mb-2">
-                <span
-                  className={`text-[11px] tabular-nums font-light tracking-[0.2em] ${
-                    isOpen ? "text-paper/45" : "text-ink-muted"
-                  }`}
-                >
-                  {step.number}
-                </span>
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 13 13"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  className={`flex-shrink-0 transition-transform duration-300 ${
-                    isOpen ? "rotate-180 text-paper/40" : "text-ink-muted"
-                  }`}
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M2 4l4.5 5L11 4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-sm md:text-base font-semibold tracking-tight leading-snug">
-                {step.title}
-              </h3>
-              <div
-                className={`grid transition-all duration-300 ease-in-out ${
-                  isOpen ? "grid-rows-[1fr] mt-3" : "grid-rows-[0fr]"
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <p
-                    className={`leading-relaxed text-sm ${
-                      isOpen ? "text-paper/70" : "text-ink-soft"
-                    }`}
-                  >
-                    {step.body}
-                  </p>
-                </div>
-              </div>
-            </button>
-          );
-        })}
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
+
+        {/* Text overlay — one per step, fades in/out */}
+        {steps.map((step, i) => (
+          <div
+            key={step.number}
+            className={`absolute bottom-0 inset-x-0 p-8 md:p-12 transition-all duration-500 ${
+              i === openIndex
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-4 pointer-events-none"
+            }`}
+          >
+            <h3 className="text-paper text-xl md:text-2xl lg:text-[1.75rem] font-semibold tracking-tight leading-snug text-balance mb-3">
+              {step.title}
+            </h3>
+            <p className="text-paper/65 text-sm md:text-base leading-relaxed max-w-[55ch]">
+              {step.body}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );
