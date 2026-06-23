@@ -121,11 +121,11 @@ function Content({ heroImage }: { heroImage: string }) {
       </div>
 
       {/* PROCESS */}
-      <section className="border-t border-ink/10">
-        <div className="container-x py-8 md:py-10">
-          <p className="ticker text-ink-muted">{t("process.title")}</p>
+      <section className="section-pad border-t border-ink/10">
+        <div className="container-x">
+          <p className="ticker text-ink-muted mb-8 md:mb-10">{t("process.title")}</p>
+          <ProcessAccordion steps={steps} />
         </div>
-        <ProcessAccordion steps={steps} />
       </section>
 
       {/* SELECTED PROJECTS */}
