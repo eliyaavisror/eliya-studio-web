@@ -27,9 +27,9 @@ const config: Config = {
       },
       fontSize: {
         // Variation B — tighter, heavier display scale
-        "display-2xl": ["clamp(3rem, 8.5vw, 8rem)", { lineHeight: "0.86", letterSpacing: "-0.045em" }],
-        "display-xl":  ["clamp(2.5rem, 6vw, 5.5rem)", { lineHeight: "0.92", letterSpacing: "-0.035em" }],
-        "display-lg":  ["clamp(1.875rem, 4vw, 3.5rem)", { lineHeight: "1", letterSpacing: "-0.025em" }],
+        "display-2xl": ["clamp(3rem, 8.5vw, 8rem)", { lineHeight: "0.92", letterSpacing: "-0.025em" }],
+        "display-xl":  ["clamp(2.5rem, 6vw, 5.5rem)", { lineHeight: "0.96", letterSpacing: "-0.018em" }],
+        "display-lg":  ["clamp(1.875rem, 4vw, 3.5rem)", { lineHeight: "1.05", letterSpacing: "-0.012em" }],
       },
       letterSpacing: { tightest: "-0.045em" },
       maxWidth: { "8xl": "88rem" },

@@ -55,7 +55,7 @@ export default function ProcessAccordion({ steps }: { steps: Step[] }) {
           <h3 className="text-paper text-xl md:text-2xl lg:text-[1.75rem] font-semibold tracking-tight leading-snug text-balance mb-3">
             {step.title}
           </h3>
-          <p className="text-paper/65 text-sm md:text-base leading-relaxed max-w-[55ch]">
+          <p className="text-paper/80 text-sm md:text-base leading-relaxed max-w-[55ch]">
             {step.body}
           </p>
         </div>
@@ -71,7 +71,7 @@ export default function ProcessAccordion({ steps }: { steps: Step[] }) {
               onClick={() => setOpenIndex(i)}
               aria-label={step.title}
               aria-pressed={isActive}
-              className={`w-10 h-10 md:w-11 md:h-11 rounded-full flex items-center justify-center text-[11px] md:text-xs tabular-nums tracking-widest transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-paper/50 ${
+              className={`w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center text-[11px] md:text-xs tabular-nums tracking-widest transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-paper/50 ${
                 isActive
                   ? "bg-paper text-ink font-semibold shadow-lg scale-110"
                   : "bg-ink/40 text-paper/70 hover:bg-ink/60 hover:text-paper backdrop-blur-sm"

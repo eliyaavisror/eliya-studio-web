@@ -33,7 +33,7 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-3">
-            <h3 className="text-xs uppercase tracking-[0.3em] text-paper/50 font-medium mb-5">
+            <h3 className="text-xs uppercase tracking-[0.3em] text-paper/70 font-medium mb-5">
               {t("footer.navigation")}
             </h3>
             <ul className="space-y-3 text-sm">
@@ -46,7 +46,7 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h3 className="text-xs uppercase tracking-[0.3em] text-paper/50 font-medium mb-5">
+            <h3 className="text-xs uppercase tracking-[0.3em] text-paper/70 font-medium mb-5">
               {t("footer.legal")}
             </h3>
             <ul className="space-y-3 text-sm">
@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
 
           <div className="md:col-span-2">
-            <h3 className="text-xs uppercase tracking-[0.3em] text-paper/50 font-medium mb-5">
+            <h3 className="text-xs uppercase tracking-[0.3em] text-paper/70 font-medium mb-5">
               {t("footer.follow")}
             </h3>
             <ul className="space-y-3 text-sm">
@@ -85,7 +85,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-20 pt-8 border-t border-paper/10 flex flex-col md:flex-row justify-between gap-4 text-xs text-paper/50">
+        <div className="mt-20 pt-8 border-t border-paper/10 flex flex-col md:flex-row justify-between gap-4 text-xs text-paper/65">
           <p>© {year} {siteConfig.name}. {t("footer.rights")}.</p>
           <p>{t("footer.designedBy")}</p>
         </div>

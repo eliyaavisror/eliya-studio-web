@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import Logo from "./Logo";
 import LocaleSwitcher from "./LocaleSwitcher";
 
 export default function Header() {
   const t = useTranslations("nav");
+  const locale = useLocale();
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -79,7 +80,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop nav — Variation B: uppercase, tracked-out */}
-            <nav aria-label="Primary" className="hidden lg:flex items-center gap-10">
+            <nav aria-label={locale === "he" ? "ניווט ראשי" : "Primary navigation"} className="hidden lg:flex items-center gap-10">
               {navItems.map((item) => (
                 <Link
                   key={item.href}

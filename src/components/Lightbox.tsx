@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useCallback, useState, useRef } from "react";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import type { GalleryImage } from "@/data/gallery";
 
@@ -28,6 +29,8 @@ function CtrlBtn({
 }
 
 export default function Lightbox({ images, index, onClose, onPrev, onNext }: Props) {
+  const locale = useLocale();
+  const isHe = locale === "he";
   const current = images[index];
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
@@ -124,7 +127,7 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
       ref={rootRef}
       role="dialog"
       aria-modal="true"
-      aria-label={current.title ?? ""}
+      aria-label={current.title ?? (isHe ? "תצוגת תמונה" : "Image viewer")}
       className="fixed inset-0 z-[200] flex items-center justify-center bg-[#0a0a0a] select-none"
       onClick={zoom === 1 ? handleClose : undefined}
       onMouseMove={onMouseMove}
@@ -146,7 +149,7 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
 
       {/* Controls — top right */}
       <div className="absolute top-2 right-2 flex items-center z-10" onClick={e => e.stopPropagation()}>
-        <CtrlBtn onClick={zoomOut} disabled={zoom <= 1} label="הקטן תמונה">
+        <CtrlBtn onClick={zoomOut} disabled={zoom <= 1} label={isHe ? "הקטן תמונה" : "Zoom out"}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true">
             <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M8 11h6"/>
           </svg>
@@ -156,12 +159,12 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
             {Math.round(zoom * 100)}%
           </span>
         )}
-        <CtrlBtn onClick={zoomIn} disabled={zoom >= 4} label="הגדל תמונה">
+        <CtrlBtn onClick={zoomIn} disabled={zoom >= 4} label={isHe ? "הגדל תמונה" : "Zoom in"}>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true">
             <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/>
           </svg>
         </CtrlBtn>
-        <CtrlBtn onClick={toggleFullscreen} label={isFullscreen ? "צא ממסך מלא" : "מסך מלא"}>
+        <CtrlBtn onClick={toggleFullscreen} label={isFullscreen ? (isHe ? "צא ממסך מלא" : "Exit fullscreen") : (isHe ? "מסך מלא" : "Fullscreen")}>
           {isFullscreen ? (
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true">
               <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
@@ -172,7 +175,7 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
             </svg>
           )}
         </CtrlBtn>
-        <CtrlBtn onClick={handleClose} label="סגור">
+        <CtrlBtn onClick={handleClose} label={isHe ? "סגור" : "Close"}>
           <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true">
             <path d="M3 3l14 14M17 3L3 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
           </svg>
@@ -182,13 +185,13 @@ export default function Lightbox({ images, index, onClose, onPrev, onNext }: Pro
       {/* Prev / Next (hidden when zoomed) */}
       {zoom === 1 && (
         <>
-          <button onClick={e => { e.stopPropagation(); handlePrev(); }} aria-label="תמונה קודמת"
+          <button onClick={e => { e.stopPropagation(); handlePrev(); }} aria-label={isHe ? "תמונה קודמת" : "Previous image"}
             className="absolute left-1 md:left-3 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-white/50 hover:text-white transition-colors z-10">
             <svg width="28" height="28" fill="none" viewBox="0 0 28 28" aria-hidden="true">
               <path d="M17 6l-8 8 8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
-          <button onClick={e => { e.stopPropagation(); handleNext(); }} aria-label="תמונה הבאה"
+          <button onClick={e => { e.stopPropagation(); handleNext(); }} aria-label={isHe ? "תמונה הבאה" : "Next image"}
             className="absolute right-1 md:right-3 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-white/50 hover:text-white transition-colors z-10">
             <svg width="28" height="28" fill="none" viewBox="0 0 28 28" aria-hidden="true">
               <path d="M11 6l8 8-8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

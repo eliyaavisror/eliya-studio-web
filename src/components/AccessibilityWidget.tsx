@@ -273,7 +273,7 @@ export default function AccessibilityWidget() {
               <button
                 onClick={close}
                 aria-label={t("close")}
-                className="w-8 h-8 flex items-center justify-center rounded-sm hover:opacity-60 transition-opacity focus-visible:outline-2 focus-visible:outline-ink"
+                className="w-11 h-11 flex items-center justify-center rounded-sm hover:opacity-60 transition-opacity focus-visible:outline-2 focus-visible:outline-ink"
               >
                 <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true" focusable="false">
                   <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round"/>
@@ -304,7 +304,7 @@ export default function AccessibilityWidget() {
             <div className="px-3 pb-3">
               <button
                 onClick={reset}
-                className="w-full h-10 border border-paper-line ticker text-ink-muted hover:border-ink hover:text-ink transition-colors focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-[-2px]"
+                className="w-full h-11 border border-paper-line ticker text-ink-muted hover:border-ink hover:text-ink transition-colors focus-visible:outline-2 focus-visible:outline-ink focus-visible:outline-offset-[-2px]"
               >
                 {t("reset")}
               </button>

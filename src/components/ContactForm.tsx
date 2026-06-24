@@ -116,7 +116,7 @@ export default function ContactForm() {
         )}
       </div>
 
-      <div className="flex items-start gap-3">
+      <div className="flex items-start gap-3 min-h-[44px]">
         <input
           id="consent"
           name="consent"
@@ -124,9 +124,9 @@ export default function ContactForm() {
           required
           aria-required="true"
           aria-invalid={Boolean(errors.consent)}
-          className="mt-1 w-5 h-5 border border-paper-line"
+          className="mt-1 w-5 h-5 border border-paper-line flex-shrink-0"
         />
-        <label htmlFor="consent" className="text-sm text-ink-soft">
+        <label htmlFor="consent" className="text-sm text-ink-soft cursor-pointer pt-0.5">
           {t("consent")}{" "}
           <Link href="/privacy" className="link-underline font-medium">
             {t("privacyLink")}
