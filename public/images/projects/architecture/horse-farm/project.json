@@ -15,10 +15,14 @@
     "en": "Ruth and Haim Man"
   },
   "cover": "הדמית הפרויקט.webp",
+  "credit": {
+    "he": "הפרויקט מתוכנן בשיתוף פעולה עם אדריכלית הנוף **צופיה ג'ייקוב**.",
+    "en": "Designed in collaboration with landscape architect **Tzofia Jacob**."
+  },
   "titleBackground": "רקע_לוחם.png",
   "description": {
-    "he": "חוות חוסן, סמוך ליישוב אלון בבנימין, היא מרחב שיקומי וטיפולי המשתרע על פני כ-27 דונם, שתוכנן בקפידה כדי לתמוך בתהליכי החלמה וצמיחה. הפרויקט מעניק מענה ייעודי ללוחמים, יוצאי צבא ומשפחותיהם, לצד מתחם רכיבה טיפולית לאוכלוסייה הכללית. התכנון רותם את הסביבה הבנויה ככלי טיפולי אקטיבי, ומייצר דיאלוג הרמוני עם נופי הבראשית המדבריים, כדי להעניק למטופלים מרחב שקט, מוגן ועוטף להשתקם בו.\nהפרויקט מתוכנן בשיתוף פעולה עם אדריכלית הנוף צופיה ג'ייקוב.",
-    "en": "Hosin Farm, near the settlement of Alon in Binyamin, is a rehabilitative and therapeutic space spanning approximately 27 dunams, carefully designed to support recovery and growth. The project provides dedicated support for combatants, veterans, and their families, alongside an equine therapy center for the general public. The design harnesses the built environment as an active therapeutic tool, creating a harmonious dialogue with the primeval desert landscape, to offer patients a quiet, protected, and enveloping space in which to heal.\nThe project was designed in collaboration with landscape architect Tsofiya Jacob."
+    "he": "חוות חוסן, סמוך ליישוב אלון בבנימין, היא מרחב שיקומי וטיפולי המשתרע על פני כ-27 דונם, שתוכנן בקפידה כדי לתמוך בתהליכי החלמה וצמיחה. הפרויקט מעניק מענה ייעודי ללוחמים, יוצאי צבא ומשפחותיהם, לצד מתחם רכיבה טיפולית לאוכלוסייה הכללית. התכנון רותם את הסביבה הבנויה ככלי טיפולי אקטיבי, ומייצר דיאלוג הרמוני עם נופי הבראשית המדבריים, כדי להעניק למטופלים מרחב שקט, מוגן ועוטף להשתקם בו.",
+    "en": "Hosin Farm, near the settlement of Alon in Binyamin, is a rehabilitative and therapeutic space spanning approximately 27 dunams, carefully designed to support recovery and growth. The project provides dedicated support for combatants, veterans, and their families, alongside an equine therapy center for the general public. The design harnesses the built environment as an active therapeutic tool, creating a harmonious dialogue with the primeval desert landscape, to offer patients a quiet, protected, and enveloping space in which to heal."
   },
   "sections": [
     {
