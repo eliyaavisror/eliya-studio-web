@@ -7,6 +7,8 @@ import { getArchProjects, getArchProjectBySlug, type ProjectStatus } from "@/dat
 import ProjectImageTabs from "@/components/ProjectImageTabs";
 import ProjectRichContent from "@/components/ProjectRichContent";
 import RichText from "@/components/RichText";
+import CoverViewer from "@/components/CoverViewer";
+import HeroVideo from "@/components/HeroVideo";
 import type { Metadata } from "next";
 
 const STATUS_MAP: Record<ProjectStatus, { he: string; en: string; dot: string }> = {
@@ -49,7 +51,9 @@ function Content({ slug }: { slug: string }) {
     <>
       {/* ══ HERO ══ title over background image ══ */}
       <section className="relative isolate flex min-h-[40vh] md:min-h-[52vh] flex-col justify-end overflow-hidden bg-ink">
-        {project.titleBackground && (
+        {project.heroVideo ? (
+          <HeroVideo src={project.heroVideo} />
+        ) : project.titleBackground && (
           <Image
             src={project.titleBackground}
             alt=""
@@ -60,7 +64,7 @@ function Content({ slug }: { slug: string }) {
           />
         )}
         {/* Tonal overlays for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/10" />
 
         <div className="container-x relative z-10 pb-8 md:pb-12 pt-32 md:pt-40">
           <Link
@@ -103,19 +107,12 @@ function Content({ slug }: { slug: string }) {
       {/* ══ COVER ══ full-width project visualization, uncropped ══ */}
       <section className="pt-10 md:pt-14">
         <div className="container-x">
-          <div
-            className="relative w-full overflow-hidden bg-paper-warm"
-            style={{ aspectRatio: project.coverAspect ?? 16 / 9 }}
-          >
-            <Image
-              src={project.cover}
-              alt={project.title[locale]}
-              fill
-              sizes="(max-width: 1408px) 100vw, 1408px"
-              className="object-cover"
-              priority
-            />
-          </div>
+          <CoverViewer
+            src={project.cover}
+            alt={project.title[locale]}
+            aspect={project.coverAspect ?? 16 / 9}
+            locale={locale}
+          />
         </div>
       </section>
 

@@ -30,6 +30,7 @@ export interface Project {
   cover: string;
   coverAspect?: number;
   titleBackground?: string;
+  heroVideo?: string;
   credit?: { he: string; en: string };
   images: string[];
   imageGroups?: ImageGroup[];
@@ -69,6 +70,7 @@ type ProjectJSON = {
   credit?: { he: string; en: string };
   cover?: string;
   titleBackground?: string;
+  heroVideo?: string;
   images?: string[];
   imageGroups?: ImageGroupJSON[];
   sections?: ContentSectionJSON[];
@@ -144,6 +146,7 @@ function loadArchProjects(): Project[] {
         cover,
         coverAspect,
         titleBackground,
+        heroVideo: data.heroVideo ? `${base}/${encodePath(data.heroVideo)}` : undefined,
         images: images.length ? images : [fallback],
         imageGroups,
         sections,

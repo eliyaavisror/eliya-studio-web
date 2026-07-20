@@ -87,7 +87,7 @@ export default function Header() {
                   href={item.href}
                   className={`ticker link-underline transition-opacity ${
                     useLight ? "text-paper" : "text-ink"
-                  } ${isActive(item.href) ? "opacity-100" : "opacity-55 hover:opacity-100"}`}
+                  } ${isActive(item.href) ? "opacity-100" : "opacity-90 hover:opacity-100"}`}
                   aria-current={isActive(item.href) ? "page" : undefined}
                 >
                   {item.label}

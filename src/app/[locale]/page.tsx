@@ -34,11 +34,12 @@ function Content({ heroImage }: { heroImage: string }) {
             aria-hidden="true"
           />
           <div className="absolute inset-0 bg-gradient-to-l from-ink/25 via-ink/50 to-ink/75" />
+          <div className="absolute inset-x-0 top-0 h-32 md:h-40 bg-gradient-to-b from-ink/70 to-transparent" />
         </div>
 
         {/* Main content — vertically centered in remaining viewport space */}
         <div className="container-x relative flex-1 flex flex-col justify-center">
-          <p className="ticker text-paper/70 mb-8">
+          <p className="ticker text-paper mb-8">
             {t("hero.eyebrow")}
           </p>
 
